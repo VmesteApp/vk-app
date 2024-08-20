@@ -1,8 +1,8 @@
-import { View, SplitLayout, SplitCol } from '@vkontakte/vkui';
-import { useActiveVkuiLocation } from '@vkontakte/vk-mini-apps-router';
+import { View, SplitLayout, SplitCol } from "@vkontakte/vkui";
+import { useActiveVkuiLocation } from "@vkontakte/vk-mini-apps-router";
 
-import { Feed, MyProjects, Notifications, Profile, Project } from './panels';
-import { DEFAULT_VIEW_PANELS } from './routes';
+import { Feed, MyProjects, Notifications, Profile, Project } from "./panels";
+import { DEFAULT_VIEW_PANELS } from "./routes";
 
 export const App = () => {
   const { panel: activePanel = DEFAULT_VIEW_PANELS.FEED } =

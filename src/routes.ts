@@ -4,25 +4,25 @@ import {
   createRoot,
   createView,
   RoutesConfig,
-} from '@vkontakte/vk-mini-apps-router';
+} from "@vkontakte/vk-mini-apps-router";
 
-export const DEFAULT_ROOT = 'default_root';
+export const DEFAULT_ROOT = "default_root";
 
-export const DEFAULT_VIEW = 'default_view';
+export const DEFAULT_VIEW = "default_view";
 
 export const DEFAULT_VIEW_PANELS = {
-  FEED: 'feed',
-  PROJECT: 'project',
-  MY_PROJECTS: 'my-projects',
-  EDIT_PROJECT: 'edit-project',
-  PROFILE: 'profile',
-  NOTIFICATIONS: 'notifications',
+  FEED: "feed",
+  PROJECT: "project",
+  MY_PROJECTS: "my-projects",
+  EDIT_PROJECT: "edit-project",
+  PROFILE: "profile",
+  NOTIFICATIONS: "notifications",
 } as const;
 
 export const routes = RoutesConfig.create([
   createRoot(DEFAULT_ROOT, [
     createView(DEFAULT_VIEW, [
-      createPanel(DEFAULT_VIEW_PANELS.FEED, '/', []),
+      createPanel(DEFAULT_VIEW_PANELS.FEED, "/", []),
       createPanel(
         DEFAULT_VIEW_PANELS.PROFILE,
         `/${DEFAULT_VIEW_PANELS.PROFILE}`,
