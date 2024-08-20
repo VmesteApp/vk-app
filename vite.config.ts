@@ -31,7 +31,8 @@ export default defineConfig({
     legacy({
       targets: ["defaults", "not IE 11"],
     }),
-    prettier(),
+    // TODO: fix prettier in dev mode
+    // prettier(),
   ],
 
   server: {

@@ -5,10 +5,12 @@ import {
   NavIdProps,
   PanelHeaderBack,
   Group,
-  Placeholder,
+  Header,
+  SimpleCell,
+  Switch,
 } from "@vkontakte/vkui";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
-import { Icon28ServicesOutline } from "@vkontakte/icons";
+import { Icon28Notifications, Icon28UserCircleOutline } from "@vkontakte/icons";
 
 export const Profile: FC<NavIdProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
@@ -21,10 +23,22 @@ export const Profile: FC<NavIdProps> = ({ id }) => {
         Профиль
       </PanelHeader>
 
-      <Group style={{ height: "1000px" }}>
-        <Placeholder
-          icon={<Icon28ServicesOutline width={56} height={56} />}
-        ></Placeholder>
+      <Group header={<Header mode="secondary">Меню</Header>}>
+        <SimpleCell expandable="auto" before={<Icon28UserCircleOutline />}>
+          Личные данные
+        </SimpleCell>
+        <SimpleCell expandable="auto" before={<Icon28Notifications />}>
+          Уведомления
+        </SimpleCell>
+      </Group>
+
+      <Group header={<Header mode="secondary">Настройки</Header>}>
+        <SimpleCell Component="label" after={<Switch defaultChecked />}>
+          Темная тема
+        </SimpleCell>
+        <SimpleCell Component="label" after={<Switch />}>
+          Push-уведомления
+        </SimpleCell>
       </Group>
     </Panel>
   );
