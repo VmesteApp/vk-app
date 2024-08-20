@@ -23,7 +23,6 @@ import {
   Icon28NewsfeedOutline,
   Icon28UserCircleOutline,
 } from "@vkontakte/icons";
-import { useState } from "react";
 
 const sideBarOptions: (SideBarOption & { panel?: string })[] = [
   { path: "/", panel: "feed", title: "Лента", icon: <Icon28NewsfeedOutline /> },
