@@ -23,10 +23,26 @@ export const routes = RoutesConfig.create([
   createRoot(DEFAULT_ROOT, [
     createView(DEFAULT_VIEW, [
       createPanel(DEFAULT_VIEW_PANELS.FEED, '/', []),
-      createPanel(DEFAULT_VIEW_PANELS.PROFILE, `/${DEFAULT_VIEW_PANELS.PROFILE}`, []),
-      createPanel(DEFAULT_VIEW_PANELS.NOTIFICATIONS, `/${DEFAULT_VIEW_PANELS.NOTIFICATIONS}`, []),
-      createPanel(DEFAULT_VIEW_PANELS.PROJECT, `/${DEFAULT_VIEW_PANELS.PROJECT}`, []),
-      createPanel(DEFAULT_VIEW_PANELS.MY_PROJECTS, `/${DEFAULT_VIEW_PANELS.MY_PROJECTS}`, []),
+      createPanel(
+        DEFAULT_VIEW_PANELS.PROFILE,
+        `/${DEFAULT_VIEW_PANELS.PROFILE}`,
+        []
+      ),
+      createPanel(
+        DEFAULT_VIEW_PANELS.NOTIFICATIONS,
+        `/${DEFAULT_VIEW_PANELS.NOTIFICATIONS}`,
+        []
+      ),
+      createPanel(
+        DEFAULT_VIEW_PANELS.PROJECT,
+        `/${DEFAULT_VIEW_PANELS.PROJECT}`,
+        []
+      ),
+      createPanel(
+        DEFAULT_VIEW_PANELS.MY_PROJECTS,
+        `/${DEFAULT_VIEW_PANELS.MY_PROJECTS}`,
+        []
+      ),
     ]),
   ]),
 ]);
