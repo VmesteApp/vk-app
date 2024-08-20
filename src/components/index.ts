@@ -1,2 +1,1 @@
-export * from "./navigation"
-export * from "./pulses"
+export * from "./navigation";

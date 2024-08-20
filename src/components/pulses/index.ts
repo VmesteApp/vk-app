@@ -1,1 +1,0 @@
-export { PulseCard } from "./PulseCard";
