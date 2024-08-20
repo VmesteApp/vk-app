@@ -18,7 +18,7 @@ export const MyProjects: FC<NavIdProps> = ({ id }) => {
       <PanelHeader
         before={<PanelHeaderBack onClick={() => routeNavigator.back()} />}
       >
-        Vmeste.Мои Импульсы
+        Мои Импульсы
       </PanelHeader>
 
       <Group style={{ height: "1000px" }}>

@@ -6,8 +6,6 @@ import {
   PanelHeaderBack,
   Group,
   Placeholder,
-  PanelHeaderContent,
-  Avatar,
 } from "@vkontakte/vkui";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { Icon28ServicesOutline } from "@vkontakte/icons";
@@ -20,7 +18,7 @@ export const Feed: FC<NavIdProps> = ({ id }) => {
       <PanelHeader
         before={<PanelHeaderBack onClick={() => routeNavigator.back()} />}
       >
-        Vmeste.Лента
+        Лента
       </PanelHeader>
 
       <Group style={{ height: "1000px" }}>

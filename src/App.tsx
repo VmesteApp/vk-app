@@ -6,6 +6,9 @@ import {
   useAdaptivityConditionalRender,
   PanelHeader,
   Panel,
+  Epic,
+  Tabbar,
+  TabbarItem,
 } from "@vkontakte/vkui";
 import {
   useActiveVkuiLocation,
@@ -18,22 +21,23 @@ import { SideBar, SideBarOption } from "./components";
 import {
   Icon28FireOutline,
   Icon28NewsfeedOutline,
-  Icon28Notifications,
   Icon28UserCircleOutline,
 } from "@vkontakte/icons";
+import { useState } from "react";
 
-const sideBarOptions: SideBarOption[] = [
-  { path: "/", title: "Лента", icon: <Icon28NewsfeedOutline /> },
-  { path: "/profile", title: "Профиль", icon: <Icon28UserCircleOutline /> },
+const sideBarOptions: (SideBarOption & { panel?: string })[] = [
+  { path: "/", panel: "feed", title: "Лента", icon: <Icon28NewsfeedOutline /> },
   {
     path: "/my-projects",
+    panel: "my-projects",
     title: "Мои Импульсы",
     icon: <Icon28FireOutline />,
   },
   {
-    path: "/notifications",
-    title: "Уведомления",
-    icon: <Icon28Notifications />,
+    path: "/profile",
+    panel: "profile",
+    title: "Профиль",
+    icon: <Icon28UserCircleOutline />,
   },
 ];
 
@@ -67,13 +71,40 @@ export const App = () => {
       )}
 
       <SplitCol width="100%" maxWidth="560px" stretchedOnMobile autoSpaced>
-        <View activePanel={activePanel}>
-          <Feed id="feed" />
-          <Project id="project" />
-          <MyProjects id="my-projects" />
-          <Profile id="profile" />
-          <Notifications id="notifications" />
-        </View>
+        <Epic
+          activeStory={activePanel}
+          tabbar={
+            viewWidth.tabletMinus && (
+              <Tabbar className={viewWidth.tabletMinus.className}>
+                {sideBarOptions.map(({ path, icon, title, panel }) => (
+                  <TabbarItem
+                    key={path}
+                    onClick={() => routeNavigator.push(path)}
+                    selected={activePanel === panel}
+                    data-story={path}
+                    text={title}
+                  >
+                    {icon}
+                  </TabbarItem>
+                ))}
+              </Tabbar>
+            )
+          }
+        >
+          <View id="feed" activePanel="feed">
+            <Feed id="feed" />
+          </View>
+          <View id="project" activePanel="project">
+            <Project id="project" />
+          </View>
+          <View id="my-projects" activePanel="my-projects">
+            <MyProjects id="my-projects" />
+          </View>
+          <View id="profile" activePanel="profile">
+            <Profile id="profile" />
+            <Notifications id="notifications" />
+          </View>
+        </Epic>
       </SplitCol>
     </SplitLayout>
   );
