@@ -13,7 +13,7 @@ export const DEFAULT_VIEW = "default_view";
 export const DEFAULT_VIEW_PANELS = {
   FEED: "feed",
   PROJECT: "project",
-  MY_PROJECTS: "my-projects",
+  MY_PULSE: "my-pulses",
   EDIT_PROJECT: "edit-project",
   PROFILE: "profile",
   NOTIFICATIONS: "notifications",
@@ -39,8 +39,8 @@ export const routes = RoutesConfig.create([
         []
       ),
       createPanel(
-        DEFAULT_VIEW_PANELS.MY_PROJECTS,
-        `/${DEFAULT_VIEW_PANELS.MY_PROJECTS}`,
+        DEFAULT_VIEW_PANELS.MY_PULSE,
+        `/${DEFAULT_VIEW_PANELS.MY_PULSE}`,
         []
       ),
     ]),

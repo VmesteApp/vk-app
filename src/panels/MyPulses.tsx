@@ -10,7 +10,7 @@ import {
 import { Icon28ServicesOutline } from "@vkontakte/icons";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 
-export const MyProjects: FC<NavIdProps> = ({ id }) => {
+export const MyPulses: FC<NavIdProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
 
   return (

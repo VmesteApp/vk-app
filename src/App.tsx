@@ -15,7 +15,7 @@ import {
   useRouteNavigator,
 } from "@vkontakte/vk-mini-apps-router";
 
-import { Feed, MyProjects, Notifications, Profile, Project } from "./panels";
+import { Feed, MyPulses, Notifications, Profile, Project } from "./panels";
 import { DEFAULT_VIEW_PANELS } from "./routes";
 import { SideBar, SideBarOption } from "./components";
 import {
@@ -27,8 +27,8 @@ import {
 const sideBarOptions: (SideBarOption & { panel?: string })[] = [
   { path: "/", panel: "feed", title: "Лента", icon: <Icon28NewsfeedOutline /> },
   {
-    path: "/my-projects",
-    panel: "my-projects",
+    path: "/my-pulses",
+    panel: "my-pulses",
     title: "Мои Импульсы",
     icon: <Icon28FireOutline />,
   },
@@ -96,8 +96,8 @@ export const App = () => {
           <View id="project" activePanel="project">
             <Project id="project" />
           </View>
-          <View id="my-projects" activePanel="my-projects">
-            <MyProjects id="my-projects" />
+          <View id="my-pulses" activePanel="my-pulses">
+            <MyPulses id="my-pulses" />
           </View>
           <View id="profile" activePanel="profile">
             <Profile id="profile" />
