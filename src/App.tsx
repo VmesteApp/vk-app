@@ -23,6 +23,8 @@ import {
   Icon28NewsfeedOutline,
   Icon28UserCircleOutline,
 } from "@vkontakte/icons";
+import { useEffect } from "react";
+import { authorize } from "./utils/authorize";
 
 const sideBarOptions: (SideBarOption & { panel?: string })[] = [
   { path: "/", panel: "feed", title: "Лента", icon: <Icon28NewsfeedOutline /> },
@@ -48,6 +50,10 @@ export const App = () => {
   const { viewWidth } = useAdaptivityConditionalRender();
 
   const hasHeader = platform !== "vkcom";
+
+  useEffect(() => {
+    authorize();
+  }, []);
 
   return (
     <SplitLayout center header={hasHeader && <PanelHeader delimiter="none" />}>
