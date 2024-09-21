@@ -1,52 +1,33 @@
-import { FC, ReactNode } from "react";
+import { FC, useState } from "react";
 import {
   Panel,
   PanelHeader,
   NavIdProps,
   PanelHeaderBack,
   Group,
-  Placeholder,
   Tabs,
   HorizontalScroll,
   TabsItem,
 } from "@vkontakte/vkui";
-import {
-  Icon24Advertising,
-  Icon24HomeOutline,
-  Icon24Like,
-  Icon28ServicesOutline,
-} from "@vkontakte/icons";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
+import { mockedApplications, mockedMyPulses } from "../mocks";
+import { ApplicationCard, MyPulseCard } from "../components";
 
-type TabType = {
-  icon: ReactNode;
-  title: string;
-  panel: string;
-  path: string;
-};
+type TabsType = "pulses" | "applications";
 
-const tabs: TabType[] = [
+const tabs: { title: string; tab: TabsType }[] = [
   {
-    icon: <Icon24Advertising />,
-    title: "Новый Импульс",
-    path: "",
-    panel: "",
+    title: "Импульсы",
+    tab: "pulses",
   },
   {
-    icon: <Icon24HomeOutline />,
-    title: "Мои Импульсы",
-    path: "",
-    panel: "",
-  },
-  {
-    icon: <Icon24Like />,
     title: "Заявки",
-    path: "",
-    panel: "",
+    tab: "applications",
   },
 ];
 
 export const MyPulses: FC<NavIdProps> = ({ id }) => {
+  const [selectedTabs, setSelectedTabs] = useState<TabsType>("pulses");
   const routeNavigator = useRouteNavigator();
 
   return (
@@ -57,31 +38,31 @@ export const MyPulses: FC<NavIdProps> = ({ id }) => {
         Мои Импульсы
       </PanelHeader>
 
+      <Tabs
+        mode={"default"}
+        layoutFillMode={"auto"}
+        withScrollToSelectedTab
+        scrollBehaviorToSelectedTab="center"
+      >
+        <HorizontalScroll arrowSize="m">
+          {tabs.map((tab) => (
+            <TabsItem
+              selected={selectedTabs === tab.tab}
+              disabled={false}
+              onClick={() => setSelectedTabs(tab.tab)}
+            >
+              {tab.title}
+            </TabsItem>
+          ))}
+        </HorizontalScroll>
+      </Tabs>
+
       <Group>
-        <Tabs
-          mode={"default"}
-          layoutFillMode={"auto"}
-          withScrollToSelectedTab
-          scrollBehaviorToSelectedTab="center"
-        >
-          <HorizontalScroll arrowSize="m">
-            {tabs.map((tab) => (
-              <TabsItem
-                selected={tab.panel === "groups"}
-                disabled={false}
-                onClick={() => {}}
-                before={tab.icon}
-              >
-                {tab.title}
-              </TabsItem>
+        {selectedTabs === "pulses"
+          ? mockedMyPulses.map((el) => <MyPulseCard key={el.id} {...el} />)
+          : mockedApplications.map((el) => (
+              <ApplicationCard key={el.id} {...el} />
             ))}
-          </HorizontalScroll>
-        </Tabs>
-      </Group>
-      <Group style={{ height: "1000px" }}>
-        <Placeholder
-          icon={<Icon28ServicesOutline width={56} height={56} />}
-        ></Placeholder>
       </Group>
     </Panel>
   );
