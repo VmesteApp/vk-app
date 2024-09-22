@@ -1,0 +1,40 @@
+{
+  "feed": {
+    "title": "Лента",
+    "search": "Поиск"
+  },
+  "myPulses": {
+    "title": "Мои Импульсы",
+    "tabs": {
+      "pulses": "Импульсы",
+      "applications": "Заявки"
+    },
+    "roles": {
+      "founder": "Основатель",
+      "member": "Участник"
+    },
+    "status": {
+      "pending": "На рассмотрении",
+      "approved": "Одобрено",
+      "rejected": "Отклонено"
+    }
+  },
+  "menu": {
+    "title": "Меню",
+    "subtitles": {
+      "menu": "Меню",
+      "settings": "Настройки"
+    },
+    "settings": {
+      "lang": "Язык",
+      "darkTheme": "Темная тема",
+      "pushNotifications": "Push-уведомления"
+    },
+    "menu": {
+      "notifications": "Уведомления",
+      "techSupport": "Тех. поддержка",
+      "aboutApp": "О приложении",
+      "certs": "Справки"
+    }
+  }
+}

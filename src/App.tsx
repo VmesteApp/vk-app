@@ -25,19 +25,25 @@ import {
 } from "@vkontakte/icons";
 import { useEffect } from "react";
 import { authorize } from "./utils/authorize";
+import { useTranslation } from "react-i18next";
 
 const sideBarOptions: (SideBarOption & { panel?: string })[] = [
-  { path: "/", panel: "feed", title: "Лента", icon: <Icon28NewsfeedOutline /> },
+  {
+    path: "/",
+    panel: "feed",
+    title: "feed.title",
+    icon: <Icon28NewsfeedOutline />,
+  },
   {
     path: "/my-pulses",
     panel: "my-pulses",
-    title: "Мои Импульсы",
+    title: "myPulses.title",
     icon: <Icon28FireOutline />,
   },
   {
     path: "/profile",
     panel: "profile",
-    title: "Меню",
+    title: "menu.title",
     icon: <Icon28MenuOutline />,
   },
 ];
@@ -48,6 +54,7 @@ export const App = () => {
   const routeNavigator = useRouteNavigator();
   const platform = usePlatform();
   const { viewWidth } = useAdaptivityConditionalRender();
+  const { t } = useTranslation();
 
   const hasHeader = platform !== "vkcom";
 
@@ -87,7 +94,7 @@ export const App = () => {
                     onClick={() => routeNavigator.push(path)}
                     selected={activePanel === panel}
                     data-story={path}
-                    text={title}
+                    text={t(title)}
                   >
                     {icon}
                   </TabbarItem>

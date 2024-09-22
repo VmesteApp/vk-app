@@ -1,6 +1,7 @@
 import { Icon24ListDeleteOutline } from "@vkontakte/icons";
 import { Avatar, RichCell, Text } from "@vkontakte/vkui";
 import { FC } from "react";
+import { useTranslation } from "react-i18next";
 
 interface IApplicationCardProps {
   avatar?: string;
@@ -13,19 +14,28 @@ interface IStatusProps {
 }
 
 const Status: FC<IStatusProps> = ({ status }) => {
-  const style = {
-    APPROVED: { color: "#51AF5A" },
-    REJECTED: { color: "#ED413E" },
-    PENDING: { color: "#AAABA8" },
-  };
-  const dict = {
-    APPROVED: "Одобрено",
-    REJECTED: "Отклонено",
-    PENDING: "На рассмотрении",
-  };
+  const { t } = useTranslation();
 
-  // TODO: fix this
-  return <Text style={style[status]}>{dict[status]}</Text>;
+  switch (status) {
+    case "APPROVED":
+      return (
+        <Text style={{ color: "#51AF5A" }}>
+          {t("myPulses.status.approved")}
+        </Text>
+      );
+    case "REJECTED":
+      return (
+        <Text style={{ color: "#ED413E" }}>
+          {t("myPulses.status.rejected")}
+        </Text>
+      );
+    case "PENDING":
+      return (
+        <Text style={{ color: "#AAABA8" }}>{t("myPulses.status.pending")}</Text>
+      );
+    default:
+      return null;
+  }
 };
 
 export const ApplicationCard: FC<IApplicationCardProps> = ({

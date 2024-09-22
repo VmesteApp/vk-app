@@ -1,0 +1,40 @@
+{
+  "feed": {
+    "title": "Feed",
+    "search": "Search"
+  },
+  "myPulses": {
+    "title": "My Pulses",
+    "tabs": {
+      "pulses": "Pulses",
+      "applications": "Applications"
+    },
+    "roles": {
+      "founder": "Founder",
+      "member": "Member"
+    },
+    "status": {
+      "pending": "Pending",
+      "approved": "Approved",
+      "rejected": "Rejected"
+    }
+  },
+  "menu": {
+    "title": "Menu",
+    "subtitles": {
+      "menu": "Menu",
+      "settings": "Settings"
+    },
+    "settings": {
+      "lang": "Language",
+      "darkTheme": "Dark theme",
+      "pushNotifications": "Push-notifications"
+    },
+    "menu": {
+      "notifications": "Notifications",
+      "techSupport": "Tech.support",
+      "aboutApp": "About app",
+      "certs": "Certificates"
+    }
+  }
+}

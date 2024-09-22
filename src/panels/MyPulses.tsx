@@ -12,21 +12,23 @@ import {
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { mockedApplications, mockedMyPulses } from "../mocks";
 import { ApplicationCard, MyPulseCard } from "../components";
+import { useTranslation } from "react-i18next";
 
 type TabsType = "pulses" | "applications";
 
 const tabs: { title: string; tab: TabsType }[] = [
   {
-    title: "Импульсы",
+    title: "myPulses.tabs.pulses",
     tab: "pulses",
   },
   {
-    title: "Заявки",
+    title: "myPulses.tabs.applications",
     tab: "applications",
   },
 ];
 
 export const MyPulses: FC<NavIdProps> = ({ id }) => {
+  const { t } = useTranslation();
   const [selectedTabs, setSelectedTabs] = useState<TabsType>("pulses");
   const routeNavigator = useRouteNavigator();
 
@@ -35,7 +37,7 @@ export const MyPulses: FC<NavIdProps> = ({ id }) => {
       <PanelHeader
         before={<PanelHeaderBack onClick={() => routeNavigator.back()} />}
       >
-        Мои Импульсы
+        {t("myPulses.title")}
       </PanelHeader>
 
       <Tabs
@@ -47,11 +49,12 @@ export const MyPulses: FC<NavIdProps> = ({ id }) => {
         <HorizontalScroll arrowSize="m">
           {tabs.map((tab) => (
             <TabsItem
+              key={tab.tab}
               selected={selectedTabs === tab.tab}
               disabled={false}
               onClick={() => setSelectedTabs(tab.tab)}
             >
-              {tab.title}
+              {t(tab.title)}
             </TabsItem>
           ))}
         </HorizontalScroll>

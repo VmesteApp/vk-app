@@ -12,16 +12,18 @@ import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { Icon24Filter } from "@vkontakte/icons";
 import { PulseCard } from "../components";
 import { mockedPulses } from "../mocks";
+import { useTranslation } from "react-i18next";
 
 export const Feed: FC<NavIdProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
+  const { t } = useTranslation();
 
   return (
     <Panel id={id}>
       <PanelHeader
         before={<PanelHeaderBack onClick={() => routeNavigator.back()} />}
       >
-        Лента
+        {t("feed.title")}
       </PanelHeader>
 
       <Group separator="hide">
@@ -29,6 +31,7 @@ export const Feed: FC<NavIdProps> = ({ id }) => {
           value={undefined}
           after={null}
           onChange={undefined}
+          placeholder={t("feed.search")}
           icon={<Icon24Filter />}
           onIconClick={() => {
             return false;
