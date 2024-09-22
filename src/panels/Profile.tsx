@@ -10,7 +10,11 @@ import {
   Switch,
 } from "@vkontakte/vkui";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
-import { Icon28Notifications, Icon28UserCircleOutline } from "@vkontakte/icons";
+import {
+  Icon28HelpCircleOutline,
+  Icon28InfoCircleOutline,
+  Icon28Notifications,
+} from "@vkontakte/icons";
 
 export const Profile: FC<NavIdProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
@@ -20,15 +24,18 @@ export const Profile: FC<NavIdProps> = ({ id }) => {
       <PanelHeader
         before={<PanelHeaderBack onClick={() => routeNavigator.back()} />}
       >
-        Профиль
+        Меню
       </PanelHeader>
 
       <Group header={<Header mode="secondary">Меню</Header>}>
-        <SimpleCell expandable="auto" before={<Icon28UserCircleOutline />}>
-          Личные данные
-        </SimpleCell>
         <SimpleCell expandable="auto" before={<Icon28Notifications />}>
           Уведомления
+        </SimpleCell>
+        <SimpleCell expandable="auto" before={<Icon28HelpCircleOutline />}>
+          Тех. поддержка
+        </SimpleCell>
+        <SimpleCell expandable="auto" before={<Icon28InfoCircleOutline />}>
+          О приложении, справки
         </SimpleCell>
       </Group>
 

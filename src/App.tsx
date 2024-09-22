@@ -20,8 +20,8 @@ import { DEFAULT_VIEW_PANELS } from "./routes";
 import { SideBar, SideBarOption } from "./components";
 import {
   Icon28FireOutline,
+  Icon28MenuOutline,
   Icon28NewsfeedOutline,
-  Icon28UserCircleOutline,
 } from "@vkontakte/icons";
 import { useEffect } from "react";
 import { authorize } from "./utils/authorize";
@@ -37,8 +37,8 @@ const sideBarOptions: (SideBarOption & { panel?: string })[] = [
   {
     path: "/profile",
     panel: "profile",
-    title: "Профиль",
-    icon: <Icon28UserCircleOutline />,
+    title: "Меню",
+    icon: <Icon28MenuOutline />,
   },
 ];
 
