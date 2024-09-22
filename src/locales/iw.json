@@ -1,0 +1,43 @@
+{
+  "feed": {
+    "title": "הזנה",
+    "search": "חיפוש"
+  },
+  "myPulses": {
+    "title": "הדופק שלי",
+    "tabs": {
+      "pulses": "דופק",
+      "applications": "יישומים"
+    },
+    "roles": {
+      "founder": "מייסד",
+      "member": "חבר"
+    },
+    "status": {
+      "pending": "ממתין",
+      "approved": "מאושר",
+      "rejected": "נדחה"
+    }
+  },
+  "menu": {
+    "title": "תפריט",
+    "subtitles": {
+      "menu": "תפריט",
+      "settings": "הגדרות"
+    },
+    "settings": {
+      "lang": "שפה",
+      "darkTheme": "נושא כהה",
+      "pushNotifications": "התראות דחיפה"
+    },
+    "menu": {
+      "notifications": "התראות",
+      "techSupport": "תמיכה טכנית",
+      "aboutApp": "אודות האפליקציה",
+      "certs": "תעודות"
+    }
+  },
+  "changeLanguage": {
+    "title": "שפה"
+  }
+}

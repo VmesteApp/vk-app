@@ -4,10 +4,14 @@ import LanguageDetector from "i18next-browser-languagedetector";
 
 import en from "./locales/en.json";
 import ru from "./locales/ru.json";
+import de from "./locales/de.json";
+import iw from "./locales/iw.json";
 
 const resources = {
   en: { translation: en },
   ru: { translation: ru },
+  de: { translation: de },
+  iw: { translation: iw },
 };
 
 i18n
