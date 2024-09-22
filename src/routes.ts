@@ -17,6 +17,7 @@ export const DEFAULT_VIEW_PANELS = {
   EDIT_PROJECT: "edit-project",
   PROFILE: "profile",
   NOTIFICATIONS: "notifications",
+  CHANGE_LANGUAGE: "change-language",
 } as const;
 
 export const routes = RoutesConfig.create([
@@ -41,6 +42,11 @@ export const routes = RoutesConfig.create([
       createPanel(
         DEFAULT_VIEW_PANELS.MY_PULSE,
         `/${DEFAULT_VIEW_PANELS.MY_PULSE}`,
+        []
+      ),
+      createPanel(
+        DEFAULT_VIEW_PANELS.CHANGE_LANGUAGE,
+        `/${DEFAULT_VIEW_PANELS.CHANGE_LANGUAGE}`,
         []
       ),
     ]),

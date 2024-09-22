@@ -36,5 +36,8 @@
       "aboutApp": "О приложении",
       "certs": "Справки"
     }
+  },
+  "changeLanguage": {
+    "title": "Язык"
   }
 }

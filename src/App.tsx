@@ -15,7 +15,7 @@ import {
   useRouteNavigator,
 } from "@vkontakte/vk-mini-apps-router";
 
-import { Feed, MyPulses, Notifications, Profile, Project } from "./panels";
+import { ChangeLanguage, Feed, MyPulses, Profile, Project } from "./panels";
 import { DEFAULT_VIEW_PANELS } from "./routes";
 import { SideBar, SideBarOption } from "./components";
 import {
@@ -114,7 +114,9 @@ export const App = () => {
           </View>
           <View id="profile" activePanel="profile">
             <Profile id="profile" />
-            <Notifications id="notifications" />
+          </View>
+          <View id="change-language" activePanel="change-language">
+            <ChangeLanguage id="change-language" />
           </View>
         </Epic>
       </SplitCol>

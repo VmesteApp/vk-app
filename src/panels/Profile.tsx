@@ -17,10 +17,16 @@ import {
   Icon28Notifications,
 } from "@vkontakte/icons";
 import { useTranslation } from "react-i18next";
+import { LANGUAGES } from "../constants";
+
+const getLanguageNameByCode = (code: string) => {
+  const lang = LANGUAGES.find((lang) => lang.code === code);
+  return lang ? lang.name : "";
+};
 
 export const Profile: FC<NavIdProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   return (
     <Panel id={id}>
@@ -52,7 +58,11 @@ export const Profile: FC<NavIdProps> = ({ id }) => {
           <Header mode="secondary">{t("menu.subtitles.settings")}</Header>
         }
       >
-        <SimpleCell onClick={() => {}} expandable="auto" indicator="Русский">
+        <SimpleCell
+          onClick={() => routeNavigator.push("/change-language")}
+          expandable="auto"
+          indicator={getLanguageNameByCode(i18n.language)}
+        >
           {t("menu.settings.lang")}
         </SimpleCell>
         <SimpleCell Component="label" after={<Switch defaultChecked />}>
