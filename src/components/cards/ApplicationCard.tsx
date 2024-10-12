@@ -1,4 +1,3 @@
-import { Icon24ListDeleteOutline } from "@vkontakte/icons";
 import { Avatar, RichCell, Text } from "@vkontakte/vkui";
 import { FC } from "react";
 import { useTranslation } from "react-i18next";
@@ -47,7 +46,6 @@ export const ApplicationCard: FC<IApplicationCardProps> = ({
     <RichCell
       before={<Avatar size={48} src={avatar} />}
       caption={<Status status={status} />}
-      after={<Icon24ListDeleteOutline fill="#AAABA8" />}
     >
       {name}
     </RichCell>
