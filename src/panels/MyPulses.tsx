@@ -3,7 +3,6 @@ import {
   Panel,
   PanelHeader,
   NavIdProps,
-  PanelHeaderBack,
   Group,
   Tabs,
   HorizontalScroll,
@@ -11,8 +10,9 @@ import {
 } from "@vkontakte/vkui";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { mockedApplications, mockedMyPulses } from "../mocks";
-import { ApplicationCard, MyPulseCard } from "../components";
 import { useTranslation } from "react-i18next";
+import { Icon28AddOutline } from "@vkontakte/icons";
+import { ApplicationsList, PulsesList } from "../components";
 
 type TabsType = "pulses" | "applications";
 
@@ -32,11 +32,17 @@ export const MyPulses: FC<NavIdProps> = ({ id }) => {
   const [selectedTabs, setSelectedTabs] = useState<TabsType>("pulses");
   const routeNavigator = useRouteNavigator();
 
+  const handleFindPulses = () => {
+    routeNavigator.push("/");
+  };
+
+  const handleCreatePulse = () => {
+    routeNavigator.push("/pulses/new");
+  };
+
   return (
     <Panel id={id}>
-      <PanelHeader
-        before={<PanelHeaderBack onClick={() => routeNavigator.back()} />}
-      >
+      <PanelHeader before={<Icon28AddOutline onClick={handleCreatePulse} />}>
         {t("myPulses.title")}
       </PanelHeader>
 
@@ -61,11 +67,18 @@ export const MyPulses: FC<NavIdProps> = ({ id }) => {
       </Tabs>
 
       <Group>
-        {selectedTabs === "pulses"
-          ? mockedMyPulses.map((el) => <MyPulseCard key={el.id} {...el} />)
-          : mockedApplications.map((el) => (
-              <ApplicationCard key={el.id} {...el} />
-            ))}
+        {selectedTabs === "pulses" ? (
+          <PulsesList
+            data={mockedMyPulses}
+            handleFindPulses={handleFindPulses}
+            handleCreatePulse={handleCreatePulse}
+          />
+        ) : (
+          <ApplicationsList
+            data={mockedApplications}
+            handleFindPulses={handleFindPulses}
+          />
+        )}
       </Group>
     </Panel>
   );
