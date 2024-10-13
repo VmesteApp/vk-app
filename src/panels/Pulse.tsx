@@ -7,7 +7,6 @@ import {
   Group,
   Placeholder,
   Gallery,
-  Text,
   MiniInfoCell,
   Spacing,
   FixedLayout,
@@ -67,11 +66,9 @@ export const Pulse: FC<NavIdProps> = ({ id }) => {
       )}
 
       <Group>
-        <MiniInfoCell>
-          <Text style={{ color: "#0077FF" }}>
-            {pulse.category.toUpperCase()}{" "}
-            {pulse.tags.map((tag) => `#${tag}`).join(" ")}
-          </Text>
+        <MiniInfoCell mode="more">
+          {pulse.category.toUpperCase()}{" "}
+          {pulse.tags.map((tag) => `#${tag}`).join(" ")}
         </MiniInfoCell>
 
         <Spacing size={12} />
