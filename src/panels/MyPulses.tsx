@@ -37,7 +37,7 @@ export const MyPulses: FC<NavIdProps> = ({ id }) => {
   };
 
   const handleCreatePulse = () => {
-    routeNavigator.push("/pulses/new");
+    routeNavigator.push("/pulse/create");
   };
 
   return (

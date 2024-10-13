@@ -14,6 +14,7 @@ export const DEFAULT_VIEW_PANELS = {
   FEED: "feed",
   PULSE: "pulse",
   MY_PULSE: "my-pulses",
+  CREATE_PULSE: "create-pulse",
   EDIT_PROJECT: "edit-project",
   PROFILE: "profile",
   NOTIFICATIONS: "notifications",
@@ -22,6 +23,7 @@ export const DEFAULT_VIEW_PANELS = {
 
 export const PANELS_WITHOUT_TABBAR = [
   DEFAULT_VIEW_PANELS.PULSE,
+  DEFAULT_VIEW_PANELS.CREATE_PULSE,
   DEFAULT_VIEW_PANELS.CHANGE_LANGUAGE,
 ];
 
@@ -42,6 +44,11 @@ export const routes = RoutesConfig.create([
       createPanel(
         DEFAULT_VIEW_PANELS.PULSE,
         `/${DEFAULT_VIEW_PANELS.PULSE}/:id`,
+        []
+      ),
+      createPanel(
+        DEFAULT_VIEW_PANELS.CREATE_PULSE,
+        `/${DEFAULT_VIEW_PANELS.PULSE}/create`,
         []
       ),
       createPanel(
