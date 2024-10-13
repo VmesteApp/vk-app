@@ -20,6 +20,11 @@ export const DEFAULT_VIEW_PANELS = {
   CHANGE_LANGUAGE: "change-language",
 } as const;
 
+export const PANELS_WITHOUT_TABBAR = [
+  DEFAULT_VIEW_PANELS.PULSE,
+  DEFAULT_VIEW_PANELS.CHANGE_LANGUAGE,
+];
+
 export const routes = RoutesConfig.create([
   createRoot(DEFAULT_ROOT, [
     createView(DEFAULT_VIEW, [

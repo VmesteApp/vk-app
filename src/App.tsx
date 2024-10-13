@@ -17,14 +17,14 @@ import {
 } from "@vkontakte/vk-mini-apps-router";
 
 import { ChangeLanguage, Feed, MyPulses, Profile, Pulse } from "./panels";
-import { DEFAULT_VIEW_PANELS } from "./routes";
+import { DEFAULT_VIEW_PANELS, PANELS_WITHOUT_TABBAR } from "./routes";
 import { PulsesFilterModal, SideBar, SideBarOption } from "./components";
 import {
   Icon28FireOutline,
   Icon28MenuOutline,
   Icon28NewsfeedOutline,
 } from "@vkontakte/icons";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { authorize } from "./utils/authorize";
 import { useTranslation } from "react-i18next";
 
@@ -69,6 +69,15 @@ export const App = () => {
     </ModalRoot>
   );
 
+  const showTabbar = useMemo(
+    () =>
+      !PANELS_WITHOUT_TABBAR.includes(
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        activePanel as any
+      ),
+    [activePanel]
+  );
+
   return (
     <SplitLayout
       center
@@ -97,7 +106,8 @@ export const App = () => {
         <Epic
           activeStory={activePanel}
           tabbar={
-            viewWidth.tabletMinus && (
+            viewWidth.tabletMinus &&
+            showTabbar && (
               <Tabbar className={viewWidth.tabletMinus.className}>
                 {sideBarOptions.map(({ path, icon, title, panel }) => (
                   <TabbarItem
