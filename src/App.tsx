@@ -9,6 +9,15 @@ import {
   Epic,
   Tabbar,
   TabbarItem,
+  ModalRoot,
+  useAdaptivityWithJSMediaQueries,
+  ModalPage,
+  ModalPageHeader,
+  PanelHeaderClose,
+  PanelHeaderButton,
+  Gradient,
+  Group,
+  Header,
 } from "@vkontakte/vkui";
 import {
   useActiveVkuiLocation,
@@ -17,8 +26,9 @@ import {
 
 import { ChangeLanguage, Feed, MyPulses, Profile, Project } from "./panels";
 import { DEFAULT_VIEW_PANELS } from "./routes";
-import { SideBar, SideBarOption } from "./components";
+import { PulsesFilterModal, SideBar, SideBarOption } from "./components";
 import {
+  Icon24Dismiss,
   Icon28FireOutline,
   Icon28MenuOutline,
   Icon28NewsfeedOutline,
@@ -56,14 +66,66 @@ export const App = () => {
   const { viewWidth } = useAdaptivityConditionalRender();
   const { t } = useTranslation();
 
+  const { sizeX } = useAdaptivityConditionalRender();
+
+  const { isDesktop } = useAdaptivityWithJSMediaQueries();
   const hasHeader = platform !== "vkcom";
 
   useEffect(() => {
     authorize();
   }, []);
 
+  const modalBack = () => {};
+
+  const modal = (
+    <ModalRoot activeModal={"test"}>
+      <PulsesFilterModal id="test" />
+      {/* <ModalPage
+        id={"test"}
+        onClose={modalBack}
+        settlingHeight={100}
+        height={isDesktop ? 250 : "70%"}
+        hideCloseButton={platform === "ios"}
+        header={
+          <ModalPageHeader
+            before={
+              sizeX.compact &&
+              platform === "android" && (
+                <PanelHeaderClose
+                  className={sizeX.compact.className}
+                  onClick={modalBack}
+                />
+              )
+            }
+            after={
+              platform === "ios" && (
+                <PanelHeaderButton onClick={modalBack}>
+                  <Icon24Dismiss />
+                </PanelHeaderButton>
+              )
+            }
+          ></ModalPageHeader>
+        }
+      >
+        <>
+          <Group
+            header={
+              <Header mode="secondary" indicator="25">
+                Друзья
+              </Header>
+            }
+          ></Group>
+        </>
+      </ModalPage> */}
+    </ModalRoot>
+  );
+
   return (
-    <SplitLayout center header={hasHeader && <PanelHeader delimiter="none" />}>
+    <SplitLayout
+      center
+      modal={modal}
+      header={hasHeader && <PanelHeader delimiter="none" />}
+    >
       {viewWidth.tabletPlus && (
         <SplitCol
           className={viewWidth.tabletPlus.className}
