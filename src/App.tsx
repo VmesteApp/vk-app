@@ -64,7 +64,7 @@ export const App = () => {
   }, []);
 
   const modal = (
-    <ModalRoot activeModal={"test"}>
+    <ModalRoot activeModal={""}>
       <PulsesFilterModal id="test" />
     </ModalRoot>
   );
