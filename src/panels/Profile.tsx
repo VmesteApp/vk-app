@@ -68,9 +68,6 @@ export const Profile: FC<NavIdProps> = ({ id }) => {
         >
           {t("menu.settings.lang")}
         </SimpleCell>
-        <SimpleCell Component="label" after={<Switch defaultChecked />}>
-          {t("menu.settings.darkTheme")}
-        </SimpleCell>
         <SimpleCell Component="label" after={<Switch />}>
           {t("menu.settings.pushNotifications")}
         </SimpleCell>
