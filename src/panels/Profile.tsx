@@ -8,6 +8,7 @@ import {
   Header,
   SimpleCell,
   Switch,
+  Link,
 } from "@vkontakte/vkui";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import {
@@ -42,9 +43,11 @@ export const Profile: FC<NavIdProps> = ({ id }) => {
         <SimpleCell expandable="auto" before={<Icon28Notifications />}>
           {t("menu.menu.notifications")}
         </SimpleCell>
-        <SimpleCell expandable="auto" before={<Icon28HelpCircleOutline />}>
-          {t("menu.menu.techSupport")}
-        </SimpleCell>
+        <Link href="mailto:vmesteapp@gmail.com">
+          <SimpleCell expandable="auto" before={<Icon28HelpCircleOutline />}>
+            {t("menu.menu.techSupport")}
+          </SimpleCell>
+        </Link>
         <SimpleCell expandable="auto" before={<Icon28InfoCircleOutline />}>
           {t("menu.menu.aboutApp")}
         </SimpleCell>
