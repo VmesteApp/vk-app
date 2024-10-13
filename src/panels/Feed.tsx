@@ -42,7 +42,11 @@ export const Feed: FC<NavIdProps> = ({ id }) => {
       <Group>
         <CardGrid size="l">
           {mockedPulses.map((pulse) => (
-            <PulseCard key={pulse.id} {...pulse} onPress={() => {}} />
+            <PulseCard
+              key={pulse.id}
+              {...pulse}
+              onPress={() => routeNavigator.push(`/pulse/${pulse.id}`)}
+            />
           ))}
         </CardGrid>
       </Group>

@@ -16,7 +16,7 @@ import {
   useRouteNavigator,
 } from "@vkontakte/vk-mini-apps-router";
 
-import { ChangeLanguage, Feed, MyPulses, Profile, Project } from "./panels";
+import { ChangeLanguage, Feed, MyPulses, Profile, Pulse } from "./panels";
 import { DEFAULT_VIEW_PANELS } from "./routes";
 import { PulsesFilterModal, SideBar, SideBarOption } from "./components";
 import {
@@ -117,8 +117,8 @@ export const App = () => {
           <View id="feed" activePanel="feed">
             <Feed id="feed" />
           </View>
-          <View id="project" activePanel="project">
-            <Project id="project" />
+          <View id="pulse" activePanel="pulse">
+            <Pulse id="pulse" />
           </View>
           <View id="my-pulses" activePanel="my-pulses">
             <MyPulses id="my-pulses" />
