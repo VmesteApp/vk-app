@@ -16,10 +16,7 @@ import {
   Textarea,
 } from "@vkontakte/vkui";
 import { useParams, useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
-import {
-  Icon24SendOutline,
-  Icon28GhostOutline,
-} from "@vkontakte/icons";
+import { Icon24SendOutline, Icon28GhostOutline } from "@vkontakte/icons";
 import { mockedPulses } from "../mocks";
 
 export const Pulse: FC<NavIdProps> = ({ id }) => {
@@ -55,17 +52,19 @@ export const Pulse: FC<NavIdProps> = ({ id }) => {
       </PanelHeader>
       <FixedLayout vertical="bottom" filled></FixedLayout>
 
-      <Group>
-        <Gallery
-          slideWidth="90%"
-          align="center"
-          bullets={pulse.images.length > 1 && "light"}
-        >
-          {pulse.images.map((img) => (
-            <img key={img} src={img} style={{ display: "block" }} />
-          ))}
-        </Gallery>
-      </Group>
+      {pulse.images.length > 0 && (
+        <Group>
+          <Gallery
+            slideWidth="90%"
+            align="center"
+            bullets={pulse.images.length > 1 && "light"}
+          >
+            {pulse.images.map((img) => (
+              <img key={img} src={img} style={{ display: "block" }} />
+            ))}
+          </Gallery>
+        </Group>
+      )}
 
       <Group>
         <MiniInfoCell>
