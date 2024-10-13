@@ -43,7 +43,7 @@ export const Profile: FC<NavIdProps> = ({ id }) => {
         <SimpleCell expandable="auto" before={<Icon28Notifications />}>
           {t("menu.menu.notifications")}
         </SimpleCell>
-        <Link href="mailto:vmesteapp@gmail.com">
+        <Link href="mailto:vmesteapp.ru@gmail.com">
           <SimpleCell expandable="auto" before={<Icon28HelpCircleOutline />}>
             {t("menu.menu.techSupport")}
           </SimpleCell>
