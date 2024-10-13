@@ -1,7 +1,10 @@
 {
   "feed": {
     "title": "Лента",
-    "search": "Поиск"
+    "search": "Поиск",
+    "filters": "Фильтры",
+    "selectTags": "Выберите интересующие теги",
+    "notSelected": "Не выбраны"
   },
   "myPulses": {
     "title": "Мои Импульсы",

@@ -1,7 +1,10 @@
 {
   "feed": {
     "title": "Feed",
-    "search": "Search"
+    "search": "Search",
+    "filters": "Filters",
+    "selectTags": "Select the desired tags",
+    "notSelected": "Not selected"
   },
   "myPulses": {
     "title": "My Pulses",
