@@ -40,9 +40,9 @@ export const Profile: FC<NavIdProps> = ({ id }) => {
       <Group
         header={<Header mode="secondary">{t("menu.subtitles.menu")}</Header>}
       >
-        <SimpleCell expandable="auto" before={<Icon28Notifications />}>
+        {/* <SimpleCell expandable="auto" before={<Icon28Notifications />}>
           {t("menu.menu.notifications")}
-        </SimpleCell>
+        </SimpleCell> */}
         <Link href="mailto:vmesteapp.ru@gmail.com">
           <SimpleCell expandable="auto" before={<Icon28HelpCircleOutline />}>
             {t("menu.menu.techSupport")}
@@ -68,9 +68,9 @@ export const Profile: FC<NavIdProps> = ({ id }) => {
         >
           {t("menu.settings.lang")}
         </SimpleCell>
-        <SimpleCell Component="label" after={<Switch />}>
+        {/* <SimpleCell Component="label" after={<Switch />}>
           {t("menu.settings.pushNotifications")}
-        </SimpleCell>
+        </SimpleCell> */}
       </Group>
     </Panel>
   );
