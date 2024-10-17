@@ -16,7 +16,14 @@ import {
   useRouteNavigator,
 } from "@vkontakte/vk-mini-apps-router";
 
-import { ChangeLanguage, CreatePulse, Feed, MyPulses, Profile, Pulse } from "./panels";
+import {
+  ChangeLanguage,
+  CreatePulse,
+  Feed,
+  MyPulses,
+  Profile,
+  Pulse,
+} from "./panels";
 import { DEFAULT_VIEW_PANELS, PANELS_WITHOUT_TABBAR } from "./routes";
 import { PulsesFilterModal, SideBar, SideBarOption } from "./components";
 import {
