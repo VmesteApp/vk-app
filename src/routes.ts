@@ -19,6 +19,7 @@ export const DEFAULT_VIEW_PANELS = {
   PROFILE: "profile",
   NOTIFICATIONS: "notifications",
   CHANGE_LANGUAGE: "change-language",
+  ABOUT_APP: "about-app",
 } as const;
 
 export const PANELS_WITHOUT_TABBAR = [
@@ -59,6 +60,11 @@ export const routes = RoutesConfig.create([
       createPanel(
         DEFAULT_VIEW_PANELS.CHANGE_LANGUAGE,
         `/${DEFAULT_VIEW_PANELS.CHANGE_LANGUAGE}`,
+        []
+      ),
+      createPanel(
+        DEFAULT_VIEW_PANELS.ABOUT_APP,
+        `/${DEFAULT_VIEW_PANELS.ABOUT_APP}`,
         []
       ),
     ]),

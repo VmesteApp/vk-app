@@ -17,6 +17,7 @@ import {
 } from "@vkontakte/vk-mini-apps-router";
 
 import {
+  AboutApp,
   ChangeLanguage,
   CreatePulse,
   Feed,
@@ -148,6 +149,9 @@ export const App = () => {
           </View>
           <View id="change-language" activePanel="change-language">
             <ChangeLanguage id="change-language" />
+          </View>
+          <View id="about-app" activePanel="about-app">
+            <AboutApp id="about-app" />
           </View>
         </Epic>
       </SplitCol>

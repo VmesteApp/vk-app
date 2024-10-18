@@ -5,3 +5,4 @@ export { Pulse } from "./Pulse";
 export { Notifications } from "./Notifications";
 export { ChangeLanguage } from "./ChangeLanguage";
 export { CreatePulse } from "./CreatePulse";
+export { AboutApp } from "./AboutApp";

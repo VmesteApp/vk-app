@@ -7,15 +7,12 @@ import {
   Group,
   Header,
   SimpleCell,
-  Switch,
   Link,
 } from "@vkontakte/vkui";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import {
-  Icon28DocumentListOutline,
   Icon28HelpCircleOutline,
   Icon28InfoCircleOutline,
-  Icon28Notifications,
 } from "@vkontakte/icons";
 import { useTranslation } from "react-i18next";
 import { LANGUAGES } from "../constants";
@@ -48,11 +45,8 @@ export const Profile: FC<NavIdProps> = ({ id }) => {
             {t("menu.menu.techSupport")}
           </SimpleCell>
         </Link>
-        <SimpleCell expandable="auto" before={<Icon28InfoCircleOutline />}>
-          {t("menu.menu.aboutApp")}
-        </SimpleCell>
-        <SimpleCell expandable="auto" before={<Icon28DocumentListOutline />}>
-          {t("menu.menu.certs")}
+        <SimpleCell onClick={() => routeNavigator.push("/about-app")} expandable="auto" before={<Icon28InfoCircleOutline />}>
+          {t("menu.menu.aboutAppAndCerts")}
         </SimpleCell>
       </Group>
 
