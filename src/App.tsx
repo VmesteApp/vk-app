@@ -23,7 +23,7 @@ import {
   Feed,
   MyPulses,
   Profile,
-  Pulse,
+  PulsePreview,
 } from "./panels";
 import { DEFAULT_VIEW_PANELS, PANELS_WITHOUT_TABBAR } from "./routes";
 import { PulsesFilterModal, SideBar, SideBarOption } from "./components";
@@ -135,8 +135,8 @@ export const App = () => {
           <View id="feed" activePanel="feed">
             <Feed id="feed" />
           </View>
-          <View id="pulse" activePanel="pulse">
-            <Pulse id="pulse" />
+          <View id="pulse-preview" activePanel="pulse-preview">
+            <PulsePreview id="pulse-preview" />
           </View>
           <View id="my-pulses" activePanel="my-pulses">
             <MyPulses id="my-pulses" />

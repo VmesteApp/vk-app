@@ -18,7 +18,7 @@ import { useParams, useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { Icon24SendOutline, Icon28GhostOutline } from "@vkontakte/icons";
 import { mockedPulses } from "../mocks";
 
-export const Pulse: FC<NavIdProps> = ({ id }) => {
+export const PulsePreview: FC<NavIdProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
   const params = useParams<"id">();
 

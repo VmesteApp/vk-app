@@ -20,6 +20,7 @@ export const DEFAULT_VIEW_PANELS = {
   NOTIFICATIONS: "notifications",
   CHANGE_LANGUAGE: "change-language",
   ABOUT_APP: "about-app",
+  PULSE_PREVIEW: "pulse-preview",
 } as const;
 
 export const PANELS_WITHOUT_TABBAR = [
@@ -45,6 +46,11 @@ export const routes = RoutesConfig.create([
       createPanel(
         DEFAULT_VIEW_PANELS.PULSE,
         `/${DEFAULT_VIEW_PANELS.PULSE}/:id`,
+        []
+      ),
+      createPanel(
+        DEFAULT_VIEW_PANELS.PULSE_PREVIEW,
+        `/pulse/preview/:id`,
         []
       ),
       createPanel(

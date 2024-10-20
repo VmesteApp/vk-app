@@ -45,7 +45,7 @@ export const Feed: FC<NavIdProps> = ({ id }) => {
             <PulseCard
               key={pulse.id}
               {...pulse}
-              onPress={() => routeNavigator.push(`/pulse/${pulse.id}`)}
+              onPress={() => routeNavigator.push(`/pulse/preview/${pulse.id}`)}
             />
           ))}
         </CardGrid>
