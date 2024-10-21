@@ -3,7 +3,7 @@
     "title": "Feed",
     "search": "Search",
     "filters": "Filters",
-    "selectTags": "Select the desired tags",
+    "selectTags": "Select tags you are interested in",
     "notSelected": "Not selected"
   },
   "myPulses": {
@@ -30,16 +30,48 @@
     },
     "settings": {
       "lang": "Language",
-      "pushNotifications": "Push-notifications"
+      "pushNotifications": "Push notifications"
     },
     "menu": {
       "notifications": "Notifications",
-      "techSupport": "Tech.support",
-      "aboutApp": "About app",
-      "certs": "Certificates"
+      "techSupport": "Tech support",
+      "aboutAppAndCerts": "About the app, help"
     }
   },
   "changeLanguage": {
     "title": "Language"
+  },
+  "createPulse": {
+    "title": "Create Pulse",
+    "labels": {
+      "tags": "Tags",
+      "name": "Pulse name",
+      "shortDescription": "Description for \"Feed\"",
+      "description": "Pulse description",
+      "category": "Category",
+      "event": "Event",
+      "project": "Project"
+    },
+    "placeholders": {
+      "tags": "at least 3 tags",
+      "shortDescription": "One paragraph, but a very good one!",
+      "description": "Tell us more about your Pulse",
+      "event": "For finding people for your event: events, product announcements, etc.",
+      "project": "For finding people for your project: teams for competitions, startups, etc."
+    },
+    "buttons": {
+      "publish": "Publish"
+    }
+  },
+  "aboutApp": {
+    "title": "About the app, help",
+    "aboutApp": "The \"Together\" app is designed so you can find like-minded people and realize your coolest ideas.",
+    "aboutCommunity": "The app is developed by the community of the same name. You can find more about us in",
+    "telegramChannel": "this Telegram channel",
+    "aboutDevelopers": "This is an Open Source project. Anyone who wants and can, can join us.",
+    "github": "Our Github",
+    "agreements": "Agreements",
+    "userAgreement": "User agreement",
+    "personalDataAgreement": "Agreement on the processing of personal data"
   }
 }

@@ -1,20 +1,23 @@
 {
   "feed": {
     "title": "Feed",
-    "search": "Suche"
+    "search": "Suchen",
+    "filters": "Filter",
+    "selectTags": "Wähle die Tags, die dich interessieren",
+    "notSelected": "Nicht ausgewählt"
   },
   "myPulses": {
-    "title": "Meine Pulses",
+    "title": "Meine Impulse",
     "tabs": {
-      "pulses": "Pulses",
-      "applications": "Anwendungen"
+      "pulses": "Impulse",
+      "applications": "Bewerbungen"
     },
     "roles": {
       "founder": "Gründer",
       "member": "Mitglied"
     },
     "status": {
-      "pending": "Ausstehend",
+      "pending": "In Bearbeitung",
       "approved": "Genehmigt",
       "rejected": "Abgelehnt"
     }
@@ -32,11 +35,43 @@
     "menu": {
       "notifications": "Benachrichtigungen",
       "techSupport": "Technischer Support",
-      "aboutApp": "Über die App",
-      "certs": "Zertifikate"
+      "aboutAppAndCerts": "Über die App, Hilfe"
     }
   },
   "changeLanguage": {
     "title": "Sprache"
+  },
+  "createPulse": {
+    "title": "Impuls erstellen",
+    "labels": {
+      "tags": "Tags",
+      "name": "Name des Impulses",
+      "shortDescription": "Beschreibung für den \"Feed\"",
+      "description": "Beschreibung des Impulses",
+      "category": "Kategorie",
+      "event": "Ereignis",
+      "project": "Projekt"
+    },
+    "placeholders": {
+      "tags": "mindestens 3 Tags",
+      "shortDescription": "Ein Absatz, aber ein sehr guter!",
+      "description": "Erzähl uns mehr über deinen Impuls",
+      "event": "Um Leute für dein Event zu finden: Veranstaltungen, Produktankündigungen usw.",
+      "project": "Um Leute für dein Projekt zu finden: Teams für Wettbewerbe, Start-ups usw."
+    },
+    "buttons": {
+      "publish": "Veröffentlichen"
+    }
+  },
+  "aboutApp": {
+    "title": "Über die App, Hilfe",
+    "aboutApp": "Die \"Gemeinsam\" App ist so konzipiert, dass du Gleichgesinnte finden und deine coolsten Ideen verwirklichen kannst.",
+    "aboutCommunity": "Die App wird von der gleichnamigen Community entwickelt. Mehr über uns findest du im",
+    "telegramChannel": "diesem Telegram-Kanal",
+    "aboutDevelopers": "Dies ist ein Open-Source-Projekt. Jeder, der möchte und kann, kann sich uns anschließen.",
+    "github": "Unser Github",
+    "agreements": "Vereinbarungen",
+    "userAgreement": "Nutzungsbedingungen",
+    "personalDataAgreement": "Vereinbarung zur Verarbeitung personenbezogener Daten"
   }
 }

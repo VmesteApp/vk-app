@@ -1,20 +1,23 @@
 {
   "feed": {
     "title": "הזנה",
-    "search": "חיפוש"
+    "search": "חיפוש",
+    "filters": "מסננים",
+    "selectTags": "בחר את התגיות שמעניינות אותך",
+    "notSelected": "לא נבחרו"
   },
   "myPulses": {
-    "title": "הדופק שלי",
+    "title": "הדפקים שלי",
     "tabs": {
-      "pulses": "דופק",
-      "applications": "יישומים"
+      "pulses": "דפקים",
+      "applications": "בקשות"
     },
     "roles": {
       "founder": "מייסד",
       "member": "חבר"
     },
     "status": {
-      "pending": "ממתין",
+      "pending": "בתהליך",
       "approved": "מאושר",
       "rejected": "נדחה"
     }
@@ -32,11 +35,43 @@
     "menu": {
       "notifications": "התראות",
       "techSupport": "תמיכה טכנית",
-      "aboutApp": "אודות האפליקציה",
-      "certs": "תעודות"
+      "aboutAppAndCerts": "אודות האפליקציה, עזרה"
     }
   },
   "changeLanguage": {
     "title": "שפה"
+  },
+  "createPulse": {
+    "title": "צור דופק",
+    "labels": {
+      "tags": "תגיות",
+      "name": "שם הדופק",
+      "shortDescription": "תיאור ל\"הזנה\"",
+      "description": "תיאור הדופק",
+      "category": "קטגוריה",
+      "event": "אירוע",
+      "project": "פרויקט"
+    },
+    "placeholders": {
+      "tags": "לפחות 3 תגיות",
+      "shortDescription": "פסקה אחת, אבל טובה מאוד!",
+      "description": "ספר לנו עוד על הדופק שלך",
+      "event": "לחיפוש אנשים לאירוע שלך: אירועים, הכרזות על מוצרים וכו'",
+      "project": "לחיפוש אנשים לפרויקט שלך: צוותים לתחרויות, סטארטאפים וכו'"
+    },
+    "buttons": {
+      "publish": "פרסם"
+    }
+  },
+  "aboutApp": {
+    "title": "אודות האפליקציה, עזרה",
+    "aboutApp": "האפליקציה \"יחד\" נוצרה כדי שתוכל למצוא אנשים בעלי דעות דומות ולממש את הרעיונות המגניבים ביותר שלך.",
+    "aboutCommunity": "האפליקציה מפותחת על ידי הקהילה בעלת אותו השם. ניתן למצוא מידע נוסף עלינו ב",
+    "telegramChannel": "ערוץ טלגרם זה",
+    "aboutDevelopers": "זהו פרויקט קוד פתוח. כל מי שרוצה ויכול, יכול להצטרף אלינו.",
+    "github": "הגיית'אב שלנו",
+    "agreements": "הסכמים",
+    "userAgreement": "הסכם משתמש",
+    "personalDataAgreement": "הסכם לעיבוד נתונים אישיים"
   }
 }
