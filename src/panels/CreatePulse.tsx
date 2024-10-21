@@ -5,12 +5,15 @@ import {
   PanelHeader,
   PanelHeaderBack,
 } from "@vkontakte/vkui";
-import { FC, useState } from "react";
+import { FC, useCallback, useEffect, useMemo, useState } from "react";
 import { CreatePulseForm, ICreatePulsePayload } from "../components";
+import { ITag } from "../types";
+import api from "../network";
+import { useTranslation } from "react-i18next";
 
 const defaultValue: ICreatePulsePayload = {
   name: "",
-  category: "",
+  category: "event",
   description: "",
   short_description: "",
   tags: [],
@@ -18,26 +21,78 @@ const defaultValue: ICreatePulsePayload = {
 
 export const CreatePulse: FC<NavIdProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
+  const { t } = useTranslation();
   const [pulse, setPulse] = useState<ICreatePulsePayload>(defaultValue);
+  const [tags, setTags] = useState<ITag[]>([]);
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  // fetch tags
+  useEffect(() => {
+    const fetchTags = async () => {
+      try {
+        const response = await api.get<{ tags: ITag[] }>("/content/tags");
+
+        if (response.status === 200) {
+          setTags(response.data.tags);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchTags();
+  }, []);
+
+  // validation form
+  useEffect(() => {
+    const isValid =
+      pulse.description &&
+      pulse.name &&
+      pulse.short_description &&
+      pulse.tags.length >= 3;
+
+    setIsFormValid(Boolean(isValid));
+  }, [pulse]);
+
+  const tagsAsset = useMemo(
+    () =>
+      tags.map((tag) => ({
+        value: String(tag.id),
+        label: tag.name,
+      })),
+    [tags]
+  );
+
+  const handleSubmit = useCallback(async () => {
+    try {
+      const body = {
+        ...pulse,
+        tags: pulse.tags.map((tag) => tag.value).join(","),
+      };
+      const response = await api.post("/content/pulse", body);
+
+      if (response.status === 200) {
+        routeNavigator.back();
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }, [pulse, routeNavigator]);
 
   return (
     <Panel id={id}>
       <PanelHeader
         before={<PanelHeaderBack onClick={() => routeNavigator.back()} />}
       >
-        Создать Импульс
+        {t("createPulse.title")}
       </PanelHeader>
 
       <CreatePulseForm
         data={pulse}
         handleChange={(newValue) => setPulse({ ...pulse, ...newValue })}
-        handleSubmit={() => {}}
-        tagsAsset={[
-          { value: "тэг1", label: "тэг1" },
-          { value: "тэг2", label: "тэг2" },
-          { value: "тэг3", label: "тэг3" },
-          { value: "тэг4", label: "тэг4" },
-        ]}
+        handleSubmit={handleSubmit}
+        tagsAsset={tagsAsset}
+        disabled={!isFormValid}
       />
     </Panel>
   );

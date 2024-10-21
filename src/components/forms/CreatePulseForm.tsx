@@ -29,19 +29,25 @@ interface ICreatePulseFormProps {
   handleChange: (payload: Partial<ICreatePulsePayload>) => void;
   handleSubmit: () => void;
   tagsAsset: IOption[];
+  disabled: boolean;
 }
 export const CreatePulseForm: FC<ICreatePulseFormProps> = ({
   data,
   handleChange,
   handleSubmit,
   tagsAsset,
+  disabled,
 }) => {
   const { t } = useTranslation();
 
   return (
     <Group>
       <form onSubmit={(e) => e.preventDefault()}>
-        <FormItem htmlFor="colors" top={t(`createPulse.labels.tags`)}>
+        <FormItem
+          htmlFor="colors"
+          top={t(`createPulse.labels.tags`)}
+          bottom={t(`createPulse.placeholders.tags`)}
+        >
           <ChipsSelect
             id="colors"
             value={data.tags}
@@ -64,7 +70,7 @@ export const CreatePulseForm: FC<ICreatePulseFormProps> = ({
         <FormItem
           topNode={
             <FormItem.Top>
-              <FormItem.TopLabel htmlFor="short_description">
+              <FormItem.TopLabel required htmlFor="short_description">
                 {t(`createPulse.labels.shortDescription`)}
               </FormItem.TopLabel>
               <FormItem.TopAside>
@@ -72,6 +78,7 @@ export const CreatePulseForm: FC<ICreatePulseFormProps> = ({
               </FormItem.TopAside>
             </FormItem.Top>
           }
+          required
         >
           <Textarea
             id="short_description"
@@ -95,6 +102,7 @@ export const CreatePulseForm: FC<ICreatePulseFormProps> = ({
               </FormItem.TopAside>
             </FormItem.Top>
           }
+          required
         >
           <Textarea
             id="description"
@@ -105,6 +113,7 @@ export const CreatePulseForm: FC<ICreatePulseFormProps> = ({
             onChange={(value) =>
               handleChange({ description: value.target.value })
             }
+            required
             placeholder={t(`createPulse.placeholders.description`)}
           />
         </FormItem>
@@ -128,7 +137,13 @@ export const CreatePulseForm: FC<ICreatePulseFormProps> = ({
           </RadioGroup>
         </FormItem>
         <FormItem>
-          <Button type="submit" size="l" stretched onClick={handleSubmit}>
+          <Button
+            disabled={disabled}
+            type="submit"
+            size="l"
+            stretched
+            onClick={handleSubmit}
+          >
             {t(`createPulse.buttons.publish`)}
           </Button>
         </FormItem>
