@@ -6,3 +6,5 @@ export { Notifications } from "./Notifications";
 export { ChangeLanguage } from "./ChangeLanguage";
 export { CreatePulse } from "./CreatePulse";
 export { AboutApp } from "./AboutApp";
+export { ParticipantPulse } from "./ParticipantPulse";
+export { AdminPulse } from './AdminPulse'

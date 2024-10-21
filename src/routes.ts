@@ -12,22 +12,22 @@ export const DEFAULT_VIEW = "default_view";
 
 export const DEFAULT_VIEW_PANELS = {
   FEED: "feed",
-  PULSE: "pulse",
-  MY_PULSE: "my-pulses",
+  MY_PULSES: "my-pulses",
   CREATE_PULSE: "create-pulse",
-  EDIT_PROJECT: "edit-project",
   PROFILE: "profile",
   NOTIFICATIONS: "notifications",
   CHANGE_LANGUAGE: "change-language",
   ABOUT_APP: "about-app",
   PULSE_PREVIEW: "pulse-preview",
+  PARTICIPANT_PULSE: "participant-pulse",
+  ADMIN_PULSE: "admin-pulse",
 } as const;
 
 export const PANELS_WITHOUT_TABBAR = [
-  DEFAULT_VIEW_PANELS.PULSE,
+  DEFAULT_VIEW_PANELS.PULSE_PREVIEW,
   DEFAULT_VIEW_PANELS.CREATE_PULSE,
   DEFAULT_VIEW_PANELS.CHANGE_LANGUAGE,
-];
+] as const;
 
 export const routes = RoutesConfig.create([
   createRoot(DEFAULT_ROOT, [
@@ -35,17 +35,22 @@ export const routes = RoutesConfig.create([
       createPanel(DEFAULT_VIEW_PANELS.FEED, "/", []),
       createPanel(
         DEFAULT_VIEW_PANELS.PROFILE,
-        `/${DEFAULT_VIEW_PANELS.PROFILE}`,
+        `/profile`,
         []
       ),
       createPanel(
         DEFAULT_VIEW_PANELS.NOTIFICATIONS,
-        `/${DEFAULT_VIEW_PANELS.NOTIFICATIONS}`,
+        `/notifications`,
         []
       ),
       createPanel(
-        DEFAULT_VIEW_PANELS.PULSE,
-        `/${DEFAULT_VIEW_PANELS.PULSE}/:id`,
+        DEFAULT_VIEW_PANELS.PARTICIPANT_PULSE,
+        `/pulse/:id`,
+        []
+      ),
+      createPanel(
+        DEFAULT_VIEW_PANELS.ADMIN_PULSE,
+        `/pulse/admin/:id`,
         []
       ),
       createPanel(
@@ -55,22 +60,22 @@ export const routes = RoutesConfig.create([
       ),
       createPanel(
         DEFAULT_VIEW_PANELS.CREATE_PULSE,
-        `/${DEFAULT_VIEW_PANELS.PULSE}/create`,
+        `/pulse/create`,
         []
       ),
       createPanel(
-        DEFAULT_VIEW_PANELS.MY_PULSE,
-        `/${DEFAULT_VIEW_PANELS.MY_PULSE}`,
+        DEFAULT_VIEW_PANELS.MY_PULSES,
+        `/my-pulses`,
         []
       ),
       createPanel(
         DEFAULT_VIEW_PANELS.CHANGE_LANGUAGE,
-        `/${DEFAULT_VIEW_PANELS.CHANGE_LANGUAGE}`,
+        `/change-language`,
         []
       ),
       createPanel(
         DEFAULT_VIEW_PANELS.ABOUT_APP,
-        `/${DEFAULT_VIEW_PANELS.ABOUT_APP}`,
+        `/about-app`,
         []
       ),
     ]),

@@ -18,10 +18,12 @@ import {
 
 import {
   AboutApp,
+  AdminPulse,
   ChangeLanguage,
   CreatePulse,
   Feed,
   MyPulses,
+  ParticipantPulse,
   Profile,
   PulsePreview,
 } from "./panels";
@@ -137,6 +139,12 @@ export const App = () => {
           </View>
           <View id="pulse-preview" activePanel="pulse-preview">
             <PulsePreview id="pulse-preview" />
+          </View>
+          <View id="participant-pulse" activePanel="participant-pulse">
+            <ParticipantPulse id="participant-pulse" />
+          </View>
+          <View id="admin-pulse" activePanel="admin-pulse">
+            <AdminPulse id="admin-pulse" />
           </View>
           <View id="my-pulses" activePanel="my-pulses">
             <MyPulses id="my-pulses" />
