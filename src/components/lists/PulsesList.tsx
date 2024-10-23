@@ -1,12 +1,12 @@
 import { FC } from "react";
 import { MyPulseCard } from "../cards";
 import { Button, ButtonGroup, Placeholder } from "@vkontakte/vkui";
+import { IPulse } from "../../types";
+import { useTranslation } from "react-i18next";
 
 interface IPulsesListProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  data: any[];
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  handlePressPulse: (pulse: any) => void;
+  data: IPulse[];
+  handlePressPulse: (pulse: IPulse) => void;
   handleFoundPulses: () => void;
   handleCreatePulse: () => void;
 }
@@ -17,23 +17,32 @@ export const PulsesList: FC<IPulsesListProps> = ({
   handleFoundPulses,
   handleCreatePulse,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <>
       {data.length > 0 ? (
-        data.map((el) => <MyPulseCard onPress={() => handlePressPulse(el)} key={el.id} {...el} />)
+        data.map((el) => (
+          <MyPulseCard
+            onPress={() => handlePressPulse(el)}
+            key={el.id}
+            avatar=""
+            name={el.name}
+            role={""}
+          />
+        ))
       ) : (
         <Placeholder.Container>
           <Placeholder.Text>
-            Здесь ты найдешь все импульсы, которые ты создал или в которых
-            участвуешь.
+            {t("myPulses.placeholders.pulses")}
           </Placeholder.Text>
           <Placeholder.Actions>
             <ButtonGroup mode="vertical" align="center">
               <Button size="m" onClick={handleCreatePulse}>
-                Основать Импульс
+                {t("myPulses.btns.foundPulse")}
               </Button>
               <Button size="m" mode="tertiary" onClick={handleFoundPulses}>
-                Искать Импульсы
+                {t("myPulses.btns.findPulses")}
               </Button>
             </ButtonGroup>
           </Placeholder.Actions>

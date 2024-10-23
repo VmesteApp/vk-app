@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import {
   Panel,
   PanelHeader,
@@ -9,10 +9,12 @@ import {
   TabsItem,
 } from "@vkontakte/vkui";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
-import { mockedApplications, mockedMyPulses } from "../mocks";
+import { mockedApplications } from "../mocks";
 import { useTranslation } from "react-i18next";
 import { Icon28AddOutline } from "@vkontakte/icons";
 import { ApplicationsList, PulsesList } from "../components";
+import { IPulse } from "../types";
+import api from "../network";
 
 type TabsType = "pulses" | "applications";
 
@@ -31,11 +33,28 @@ export const MyPulses: FC<NavIdProps> = ({ id }) => {
   const { t } = useTranslation();
   const [selectedTabs, setSelectedTabs] = useState<TabsType>("pulses");
   const routeNavigator = useRouteNavigator();
-  
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const handlePressPulse = (pulse: any) => {
-    routeNavigator.push(`/pulse/${pulse.id}`)
-  }
+
+  const [myPulses, setMyPulses] = useState<IPulse[]>([]);
+
+  useEffect(() => {
+    const fetchMyPulses = async () => {
+      try {
+        const response = await api.get<{ pulses: IPulse[] }>("/content/pulses");
+
+        if (response.status === 200) {
+          setMyPulses(response.data.pulses);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchMyPulses();
+  }, []);
+
+  const handlePressPulse = (pulse: IPulse) => {
+    routeNavigator.push(`/pulse/${pulse.id}`);
+  };
 
   const handleFindPulses = () => {
     routeNavigator.push("/");
@@ -74,7 +93,7 @@ export const MyPulses: FC<NavIdProps> = ({ id }) => {
       <Group>
         {selectedTabs === "pulses" ? (
           <PulsesList
-            data={mockedMyPulses}
+            data={myPulses}
             handlePressPulse={handlePressPulse}
             handleFoundPulses={handleFindPulses}
             handleCreatePulse={handleCreatePulse}
