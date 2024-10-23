@@ -1,34 +1,28 @@
 import { ContentCard, Group, Text, Title } from "@vkontakte/vkui";
 import { FC } from "react";
+import { IPulse } from "../../types";
+import { useTranslation } from "react-i18next";
 
 interface IPulseCardProps {
-  name: string;
-  category: string;
-  images: string[];
-  tags: string[];
-  shortDescription: string;
+  pulse: IPulse;
   onPress: () => void;
 }
 
 export const PulseCard: FC<IPulseCardProps> = ({
-  name,
-  category,
-  tags = [],
-  images = [""],
-  shortDescription,
+  pulse,
   onPress,
 }: IPulseCardProps) => {
+  const { t } = useTranslation();
   return (
     <ContentCard
-      src={images[0]}
-      header={<Title level="2">{name}</Title>}
+      header={<Title level="2">{pulse.name}</Title>}
       onClick={onPress}
       caption={
         <Group mode="plain">
           <Text style={{ color: "#0077FF" }}>
-            {category.toUpperCase()} {tags.map((tag) => `#${tag}`).join(" ")}
+            {t(`pulseCard.category.${pulse.category}`).toUpperCase()}{" "}
           </Text>
-          <Text>{shortDescription}</Text>
+          <Text>{pulse.short_description}</Text>
         </Group>
       }
     ></ContentCard>

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import {
   Panel,
   PanelHeader,
@@ -6,17 +6,34 @@ import {
   PanelHeaderBack,
   Group,
   CardGrid,
-  Search,
 } from "@vkontakte/vkui";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
-import { Icon24Filter } from "@vkontakte/icons";
 import { PulseCard } from "../components";
-import { mockedPulses } from "../mocks";
 import { useTranslation } from "react-i18next";
+import { IPulse } from "../types";
+import api from "../network";
 
 export const Feed: FC<NavIdProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
   const { t } = useTranslation();
+
+  const [feed, setFeed] = useState<IPulse[]>([]);
+
+  useEffect(() => {
+    const fetchFeed = async () => {
+      try {
+        const response = await api.get<IPulse[]>("/content/feed");
+
+        if (response.status === 200) {
+          setFeed(response.data);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchFeed();
+  }, []);
 
   return (
     <Panel id={id}>
@@ -25,7 +42,7 @@ export const Feed: FC<NavIdProps> = ({ id }) => {
       >
         {t("feed.title")}
       </PanelHeader>
-
+      {/* temp-ry removed
       <Group separator="hide">
         <Search
           value={undefined}
@@ -37,14 +54,14 @@ export const Feed: FC<NavIdProps> = ({ id }) => {
             return false;
           }}
         />
-      </Group>
+      </Group> */}
 
       <Group>
         <CardGrid size="l">
-          {mockedPulses.map((pulse) => (
+          {feed.map((pulse) => (
             <PulseCard
               key={pulse.id}
-              {...pulse}
+              pulse={pulse}
               onPress={() => routeNavigator.push(`/pulse/preview/${pulse.id}`)}
             />
           ))}

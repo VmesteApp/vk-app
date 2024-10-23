@@ -73,5 +73,11 @@
     "agreements": "Agreements",
     "userAgreement": "User agreement",
     "personalDataAgreement": "Agreement on the processing of personal data"
+  },
+  "pulseCard": {
+    "category": {
+      "event": "Event",
+      "project": "Project"
+    }
   }
 }
