@@ -11,3 +11,13 @@ export interface IPulse {
   description: string;
   short_description: string;
 }
+
+export interface IPulsePreview {
+  id: number;
+  category: string;
+  name: string;
+  founder_id: number;
+  description: string;
+  short_description: string;
+  members: number[];
+}
