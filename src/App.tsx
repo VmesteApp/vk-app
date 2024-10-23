@@ -37,6 +37,7 @@ import {
 import { useEffect, useMemo } from "react";
 import { authorize } from "./utils/authorize";
 import { useTranslation } from "react-i18next";
+import { useOnboarding } from "./utils";
 
 const sideBarOptions: (SideBarOption & { panel?: string })[] = [
   {
@@ -66,11 +67,13 @@ export const App = () => {
   const platform = usePlatform();
   const { viewWidth } = useAdaptivityConditionalRender();
   const { t } = useTranslation();
+  const { startOnboarding } = useOnboarding();
 
   const hasHeader = platform !== "vkcom";
 
   useEffect(() => {
     authorize();
+    startOnboarding();
   }, []);
 
   const modal = (
