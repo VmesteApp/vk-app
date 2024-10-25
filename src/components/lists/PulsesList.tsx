@@ -26,7 +26,7 @@ export const PulsesList: FC<IPulsesListProps> = ({
           <MyPulseCard
             onPress={() => handlePressPulse(el)}
             key={el.id}
-            avatar=""
+            avatar={el.images[0] || ""}
             name={el.name}
             role={""}
           />
