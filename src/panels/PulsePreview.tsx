@@ -11,6 +11,7 @@ import {
   CellButton,
   FormItem,
   Textarea,
+  Gallery,
 } from "@vkontakte/vkui";
 import { useParams, useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { Icon24SendOutline } from "@vkontakte/icons";
@@ -72,7 +73,7 @@ export const PulsePreview: FC<NavIdProps> = ({ id }) => {
         <>
           <FixedLayout vertical="bottom" filled></FixedLayout>
 
-          {/* {pulse.images.length > 0 && (
+          {pulse.images.length > 0 && (
             <Group>
               <Gallery
                 slideWidth="90%"
@@ -84,7 +85,7 @@ export const PulsePreview: FC<NavIdProps> = ({ id }) => {
                 ))}
               </Gallery>
             </Group>
-          )} */}
+          )}
 
           <Group>
             <MiniInfoCell mode="more">

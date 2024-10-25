@@ -13,8 +13,11 @@ export const PulseCard: FC<IPulseCardProps> = ({
   onPress,
 }: IPulseCardProps) => {
   const { t } = useTranslation();
+  const logo = pulse.images.length > 0 ? pulse.images[0] : "";
+
   return (
     <ContentCard
+      src={logo}
       header={<Title level="2">{pulse.name}</Title>}
       onClick={onPress}
       caption={
