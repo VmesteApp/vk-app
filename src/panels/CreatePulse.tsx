@@ -17,6 +17,7 @@ const defaultValue: ICreatePulsePayload = {
   description: "",
   short_description: "",
   tags: [],
+  images: [],
 };
 
 export const CreatePulse: FC<NavIdProps> = ({ id }) => {
@@ -49,7 +50,8 @@ export const CreatePulse: FC<NavIdProps> = ({ id }) => {
       pulse.description &&
       pulse.name &&
       pulse.short_description &&
-      pulse.tags.length >= 3;
+      pulse.tags.length >= 3 &&
+      pulse.images.length >= 1;
 
     setIsFormValid(Boolean(isValid));
   }, [pulse]);
@@ -68,11 +70,33 @@ export const CreatePulse: FC<NavIdProps> = ({ id }) => {
       const body = {
         ...pulse,
         tags: pulse.tags.map((tag) => tag.value).join(","),
+        images: undefined,
       };
-      const response = await api.post("/content/pulse", body);
+      const response = await api.post<{
+        pulse_id: number;
+      }>("/content/pulse", body);
 
       if (response.status === 200) {
-        routeNavigator.back();
+        const pulseID = response.data.pulse_id;
+
+        const formData = new FormData();
+        pulse.images.forEach((file) => {
+          formData.append("file", file);
+        });
+
+        const imageResponse = await api.post(
+          `/content/pulse/${pulseID}/image`,
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+
+        if (imageResponse.status === 200) {
+          routeNavigator.back();
+        }
       }
     } catch (error) {
       console.error(error);

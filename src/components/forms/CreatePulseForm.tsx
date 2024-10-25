@@ -1,3 +1,4 @@
+import { Icon24Camera } from "@vkontakte/icons";
 import {
   Button,
   ChipsSelect,
@@ -7,8 +8,13 @@ import {
   Radio,
   RadioGroup,
   Textarea,
+  File as FilePicker,
+  List,
+  Cell,
+  Image,
+  Header,
 } from "@vkontakte/vkui";
-import { FC } from "react";
+import { FC, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
 interface IOption {
@@ -22,6 +28,7 @@ export interface ICreatePulsePayload {
   description: string;
   short_description: string;
   tags: IOption[];
+  images: File[];
 }
 
 interface ICreatePulseFormProps {
@@ -39,6 +46,45 @@ export const CreatePulseForm: FC<ICreatePulseFormProps> = ({
   disabled,
 }) => {
   const { t } = useTranslation();
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const filelist = event.target.files;
+    if (!filelist) {
+      return handleChange({
+        ...data,
+        images: [],
+      });
+    }
+
+    const images = [];
+    for (let i = 0; i < filelist.length; i++) {
+      images.push(filelist[i]);
+    }
+
+    handleChange({
+      ...data,
+      images,
+    });
+  };
+
+  const handleImageDelete = (id: number) => {
+    handleChange({
+      ...data,
+      images: data.images.filter((_, index) => index !== id),
+    });
+  };
+
+  const handleDragFinish = ({ from, to }: { from: number; to: number }) => {
+    const _list = [...data.images];
+    _list.splice(from, 1);
+    _list.splice(to, 0, data.images[from]);
+    handleChange({ ...data, images: _list });
+  };
+
+  const previewImages = useMemo(
+    () => data.images.map((image) => URL.createObjectURL(image)),
+    [data.images]
+  );
 
   return (
     <Group>
@@ -136,6 +182,44 @@ export const CreatePulseForm: FC<ICreatePulseFormProps> = ({
             ))}
           </RadioGroup>
         </FormItem>
+
+        <FormItem
+          top="Загрузите ваше фото"
+          required
+          bottom="Обязательно одно фото. Рекомендуем загрузить не менее 3-ех фото."
+        >
+          <FilePicker
+            onChange={handleFileChange}
+            before={<Icon24Camera role="presentation" />}
+            size="m"
+            multiple
+          >
+            Открыть галерею
+          </FilePicker>
+        </FormItem>
+        {data.images.length > 0 && (
+          <Group
+            header={
+              <Header subtitle="Первое фото в списке будет аватаркой импульса." />
+            }
+          >
+            <List>
+              {data.images.map((item, index) => (
+                <Cell
+                  key={index}
+                  before={<Image src={previewImages[index]} alt="" />}
+                  mode="removable"
+                  onRemove={() => handleImageDelete(index)}
+                  draggable
+                  onDragFinish={handleDragFinish}
+                >
+                  {item.name}
+                </Cell>
+              ))}
+            </List>
+          </Group>
+        )}
+
         <FormItem>
           <Button
             disabled={disabled}
