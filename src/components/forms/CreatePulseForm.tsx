@@ -184,24 +184,23 @@ export const CreatePulseForm: FC<ICreatePulseFormProps> = ({
         </FormItem>
 
         <FormItem
-          top="Загрузите ваше фото"
+          top={t("createPulse.labels.images")}
           required
-          bottom="Обязательно одно фото. Рекомендуем загрузить не менее 3-ех фото."
+          bottom={t("createPulse.placeholders.images")}
         >
           <FilePicker
             onChange={handleFileChange}
             before={<Icon24Camera role="presentation" />}
             size="m"
+            accept="image/png, image/jpeg"
             multiple
           >
-            Открыть галерею
+            {t("createPulse.buttons.openGallery")}
           </FilePicker>
         </FormItem>
         {data.images.length > 0 && (
           <Group
-            header={
-              <Header subtitle="Первое фото в списке будет аватаркой импульса." />
-            }
+            header={<Header subtitle={t("createPulse.placeholders.avatar")} />}
           >
             <List>
               {data.images.map((item, index) => (
