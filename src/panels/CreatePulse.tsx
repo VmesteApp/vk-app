@@ -81,7 +81,7 @@ export const CreatePulse: FC<NavIdProps> = ({ id }) => {
 
         const formData = new FormData();
         pulse.images.forEach((file) => {
-          formData.append("file", file);
+          formData.append("files", file);
         });
 
         const imageResponse = await api.post(
