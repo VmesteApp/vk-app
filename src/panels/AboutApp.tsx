@@ -40,13 +40,7 @@ export const AboutApp: FC<NavIdProps> = ({ id }) => {
       </SimpleCell>
       <MiniInfoCell mode="accent" textWrap="full">
         {t("aboutApp.aboutCommunity")}{" "}
-        <Link href="https://t.me/vmesteappru">
-          {t("aboutApp.telegramChannel")}
-        </Link>
-      </MiniInfoCell>
-      <MiniInfoCell mode="accent" textWrap="full">
-        {t("aboutApp.aboutDevelopers")}{" "}
-        <Link href="https://github.com/VmesteApp">{t("aboutApp.github")}</Link>
+        <Link href="https://vk.com/club227970967">{t("aboutApp.vkGroup")}</Link>
       </MiniInfoCell>
       <Cell>
         <Title>{t("aboutApp.agreements")}</Title>
