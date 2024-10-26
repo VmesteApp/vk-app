@@ -24,6 +24,7 @@ export const PulseCard: FC<IPulseCardProps> = ({
         <Group mode="plain">
           <Text style={{ color: "#0077FF" }}>
             {t(`pulseCard.category.${pulse.category}`).toUpperCase()}{" "}
+            {pulse.tags.map((tag) => `#${tag.name}`).join(" ")}
           </Text>
           <Text>{pulse.short_description}</Text>
         </Group>

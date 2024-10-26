@@ -11,6 +11,7 @@ export interface IPulse {
   description: string;
   short_description: string;
   images: string[];
+  tags: ITag[];
 }
 
 export interface IApplication {
