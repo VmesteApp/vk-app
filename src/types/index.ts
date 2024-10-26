@@ -22,4 +22,5 @@ export interface IPulsePreview {
   short_description: string;
   members: number[];
   images: string[];
+  tags: ITag[];
 }

@@ -51,7 +51,6 @@ export const PulsePreview: FC<NavIdProps> = ({ id }) => {
         pulse_id: pulse?.id,
         message,
       };
-      console.log(body);
       const response = await api.post("/content/application", body);
 
       if (response.status === 200) {
@@ -81,16 +80,24 @@ export const PulsePreview: FC<NavIdProps> = ({ id }) => {
                 bullets={pulse.images.length > 1 && "light"}
               >
                 {pulse.images.map((img) => (
-                  <img key={img} src={img} style={{ display: "block" }} />
+                  <img
+                    key={img}
+                    src={img}
+                    style={{
+                      display: "block",
+                      objectFit: "scale-down",
+                      maxHeight: 200,
+                    }}
+                  />
                 ))}
               </Gallery>
             </Group>
           )}
 
           <Group>
-            <MiniInfoCell mode="more">
-              {t(`pulseCard.category.${pulse.category}`).toUpperCase()}
-              {/* {pulse.tags.map((tag) => `#${tag}`).join(" ")} */}
+            <MiniInfoCell mode="more" textWrap="full">
+              {t(`pulseCard.category.${pulse.category}`).toUpperCase()}{" "}
+              {pulse.tags.map((tag) => `#${tag.name}`).join(" ")}
             </MiniInfoCell>
 
             <Spacing size={12} />
