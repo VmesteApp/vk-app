@@ -1,5 +1,6 @@
 import { FC, ReactNode } from "react";
 import { Cell, Group } from "@vkontakte/vkui";
+import { useTranslation } from "react-i18next";
 
 export type SideBarOption = {
   path: string;
@@ -18,6 +19,8 @@ export const SideBar: FC<ISideBarProps> = ({
   options,
   onPress,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <Group>
       {options.map(({ title, path, icon }) => (
@@ -36,7 +39,7 @@ export const SideBar: FC<ISideBarProps> = ({
           onClick={() => onPress(path)}
           before={icon}
         >
-          {title}
+          {t(title)}
         </Cell>
       ))}
     </Group>
