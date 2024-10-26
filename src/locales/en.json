@@ -3,8 +3,8 @@
     "title": "Feed",
     "search": "Search",
     "filters": "Filters",
-    "selectTags": "Select tags you are interested in",
-    "notSelected": "Not selected"
+    "selectTags": "Select tags you're interested in",
+    "notSelected": "None selected"
   },
   "myPulses": {
     "title": "My Pulses",
@@ -20,6 +20,14 @@
       "pending": "Pending",
       "approved": "Approved",
       "rejected": "Rejected"
+    },
+    "placeholders": {
+      "pulses": "Here you'll find all the pulses you created or participate in.",
+      "applications": "Here you'll find all your applications"
+    },
+    "btns": {
+      "foundPulse": "Found a Pulse",
+      "findPulses": "Find Pulses"
     }
   },
   "menu": {
@@ -30,54 +38,75 @@
     },
     "settings": {
       "lang": "Language",
-      "pushNotifications": "Push notifications"
+      "pushNotifications": "Push Notifications"
     },
     "menu": {
       "notifications": "Notifications",
-      "techSupport": "Tech support",
-      "aboutAppAndCerts": "About the app, help"
+      "techSupport": "Tech Support",
+      "aboutAppAndCerts": "About the App and Certs"
     }
   },
   "changeLanguage": {
     "title": "Language"
   },
   "createPulse": {
-    "title": "Create Pulse",
+    "title": "Create a Pulse",
     "labels": {
       "tags": "Tags",
-      "name": "Pulse name",
+      "name": "Pulse Name",
       "shortDescription": "Description for \"Feed\"",
-      "description": "Pulse description",
+      "description": "Pulse Description",
       "category": "Category",
       "event": "Event",
-      "project": "Project"
+      "project": "Project",
+      "images": "Upload your photos"
     },
     "placeholders": {
       "tags": "at least 3 tags",
       "shortDescription": "One paragraph, but a very good one!",
       "description": "Tell us more about your Pulse",
-      "event": "For finding people for your event: events, product announcements, etc.",
-      "project": "For finding people for your project: teams for competitions, startups, etc."
+      "event": "To find people for your event: events, product announcements, etc.",
+      "project": "To find people for your project: teams for competitions, startups, etc.",
+      "images": "One photo is required. We recommend uploading at least 3 photos.",
+      "avatar": "The first photo in the list will be the pulse avatar."
     },
     "buttons": {
-      "publish": "Publish"
+      "publish": "Publish",
+      "openGallery": "Open Gallery"
     }
   },
   "aboutApp": {
-    "title": "About the app, help",
-    "aboutApp": "The \"Together\" app is designed so you can find like-minded people and realize your coolest ideas.",
-    "aboutCommunity": "The app is developed by the community of the same name. You can find more about us in",
-    "telegramChannel": "this Telegram channel",
-    "aboutDevelopers": "This is an Open Source project. Anyone who wants and can, can join us.",
-    "github": "Our Github",
+    "title": "About the App, Help",
+    "aboutApp": "The \"Together\" app was created so that you can find like-minded people and implement your coolest ideas.",
+    "aboutCommunity": "The app is being developed by the community of the same name. You can find more about us in",
+    "vkGroup": "the official VK group of the application.",
     "agreements": "Agreements",
-    "userAgreement": "User agreement",
-    "personalDataAgreement": "Agreement on the processing of personal data"
+    "userAgreement": "User Agreement",
+    "personalDataAgreement": "Personal Data Processing Agreement"
   },
   "pulseCard": {
     "category": {
       "event": "Event",
       "project": "Project"
+    }
+  },
+  "pulsePreview": {
+    "form": "Form",
+    "placeholder": "Tell us about yourself and your motivation to join the pulse",
+    "submit": "Submit Application"
+  },
+  "onboarding": {
+    "app": {
+      "title": "Networking Platform",
+      "subtitle": "A platform for finding like-minded people and creating your dream team."
+    },
+    "pulse": {
+      "title": "Pulse",
+      "subtitle": "This is an activity where you're looking for like-minded people, for example, a project or an event."
+    },
+    "lenta": {
+      "title": "Feed",
+      "subtitle": "The recommendation system will select the most interesting pulses for you."
     }
   }
 }

@@ -12,7 +12,7 @@ export async function authorize() {
   try {
     const vkToken = await bridge.send("VKWebAppGetAuthToken", {
       app_id: APP_ID,
-      scope: "friends,status,groups",
+      scope: "",
     });
 
     if (vkToken && vkToken.access_token) {

@@ -1,10 +1,10 @@
 {
   "feed": {
     "title": "Feed",
-    "search": "Suchen",
+    "search": "Suche",
     "filters": "Filter",
     "selectTags": "Wähle die Tags, die dich interessieren",
-    "notSelected": "Nicht ausgewählt"
+    "notSelected": "Keine ausgewählt"
   },
   "myPulses": {
     "title": "Meine Impulse",
@@ -17,9 +17,17 @@
       "member": "Mitglied"
     },
     "status": {
-      "pending": "In Bearbeitung",
+      "pending": "Ausstehend",
       "approved": "Genehmigt",
       "rejected": "Abgelehnt"
+    },
+    "placeholders": {
+      "pulses": "Hier findest du alle Impulse, die du erstellt hast oder an denen du teilnimmst.",
+      "applications": "Hier findest du alle deine Bewerbungen"
+    },
+    "btns": {
+      "foundPulse": "Einen Impuls gründen",
+      "findPulses": "Impulse finden"
     }
   },
   "menu": {
@@ -35,43 +43,70 @@
     "menu": {
       "notifications": "Benachrichtigungen",
       "techSupport": "Technischer Support",
-      "aboutAppAndCerts": "Über die App, Hilfe"
+      "aboutAppAndCerts": "Über die App und Hilfe"
     }
   },
   "changeLanguage": {
     "title": "Sprache"
   },
   "createPulse": {
-    "title": "Impuls erstellen",
+    "title": "Einen Impuls erstellen",
     "labels": {
       "tags": "Tags",
       "name": "Name des Impulses",
-      "shortDescription": "Beschreibung für den \"Feed\"",
+      "shortDescription": "Beschreibung für \"Feed\"",
       "description": "Beschreibung des Impulses",
       "category": "Kategorie",
-      "event": "Ereignis",
-      "project": "Projekt"
+      "event": "Veranstaltung",
+      "project": "Projekt",
+      "images": "Lade deine Fotos hoch"
     },
     "placeholders": {
       "tags": "mindestens 3 Tags",
       "shortDescription": "Ein Absatz, aber ein sehr guter!",
       "description": "Erzähl uns mehr über deinen Impuls",
-      "event": "Um Leute für dein Event zu finden: Veranstaltungen, Produktankündigungen usw.",
-      "project": "Um Leute für dein Projekt zu finden: Teams für Wettbewerbe, Start-ups usw."
+      "event": "Um Leute für deine Veranstaltung zu finden: Events, Produktankündigungen usw.",
+      "project": "Um Leute für dein Projekt zu finden: Teams für Wettbewerbe, Startups usw.",
+      "images": "Ein Foto ist erforderlich. Wir empfehlen, mindestens 3 Fotos hochzuladen.",
+      "avatar": "Das erste Foto in der Liste wird zum Avatar des Impulses."
     },
     "buttons": {
-      "publish": "Veröffentlichen"
+      "publish": "Veröffentlichen",
+      "openGallery": "Galerie öffnen"
     }
   },
   "aboutApp": {
     "title": "Über die App, Hilfe",
-    "aboutApp": "Die \"Gemeinsam\" App ist so konzipiert, dass du Gleichgesinnte finden und deine coolsten Ideen verwirklichen kannst.",
-    "aboutCommunity": "Die App wird von der gleichnamigen Community entwickelt. Mehr über uns findest du im",
-    "telegramChannel": "diesem Telegram-Kanal",
-    "aboutDevelopers": "Dies ist ein Open-Source-Projekt. Jeder, der möchte und kann, kann sich uns anschließen.",
-    "github": "Unser Github",
+    "aboutApp": "Die \"Together\" App wurde entwickelt, damit du Gleichgesinnte finden und deine coolsten Ideen umsetzen kannst.",
+    "aboutCommunity": "Die App wird von der gleichnamigen Community entwickelt. Mehr über uns findest du in",
+    "vkGroup": "der offiziellen VK-Gruppe der Anwendung.",
     "agreements": "Vereinbarungen",
     "userAgreement": "Nutzungsbedingungen",
-    "personalDataAgreement": "Vereinbarung zur Verarbeitung personenbezogener Daten"
+    "personalDataAgreement": "Datenschutzvereinbarung"
+  },
+  "pulseCard": {
+    "category": {
+      "event": "Veranstaltung",
+      "project": "Projekt"
+    }
+  },
+  "pulsePreview": {
+    "form": "Formular",
+    "placeholder": "Erzähl uns von dir und deiner Motivation, dem Impuls beizutreten",
+    "submit": "Bewerbung einreichen"
+  },
+  "onboarding": {
+    "app": {
+      "title": "Networking-Plattform",
+      "subtitle": "Eine Plattform, um Gleichgesinnte zu finden und dein Traumteam zu bilden."
+    },
+    "pulse": {
+      "title": "Impuls",
+      "subtitle": "Dies ist eine Aktivität, bei der du nach Gleichgesinnten suchst, zum Beispiel ein Projekt oder eine Veranstaltung."
+    },
+    "lenta": {
+      "title": "Feed",
+      "subtitle": "Das Empfehlungssystem wählt die interessantesten Impulse für dich aus."
+    }
   }
 }
