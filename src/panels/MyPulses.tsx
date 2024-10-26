@@ -9,11 +9,10 @@ import {
   TabsItem,
 } from "@vkontakte/vkui";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
-import { mockedApplications } from "../mocks";
 import { useTranslation } from "react-i18next";
 import { Icon28AddOutline } from "@vkontakte/icons";
 import { ApplicationsList, PulsesList } from "../components";
-import { IPulse } from "../types";
+import { IApplication, IPulse } from "../types";
 import api from "../network";
 
 type TabsType = "pulses" | "applications";
@@ -35,6 +34,7 @@ export const MyPulses: FC<NavIdProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
 
   const [myPulses, setMyPulses] = useState<IPulse[]>([]);
+  const [myApplications, setMyApplications] = useState<IApplication[]>([]);
 
   useEffect(() => {
     const fetchMyPulses = async () => {
@@ -48,12 +48,27 @@ export const MyPulses: FC<NavIdProps> = ({ id }) => {
         console.log(error);
       }
     };
+    const fetchMyApplications = async () => {
+      try {
+        const response = await api.get<{ application: IApplication[] }>(
+          "/content/application/my/"
+        );
+
+        if (response.status === 200) {
+          setMyApplications(response.data.application);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
     fetchMyPulses();
+    fetchMyApplications();
   }, []);
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handlePressPulse = (pulse: IPulse) => {
-    routeNavigator.push(`/pulse/${pulse.id}`);
+    // routeNavigator.push(`/pulse/${pulse.id}`);
   };
 
   const handleFindPulses = () => {
@@ -100,7 +115,7 @@ export const MyPulses: FC<NavIdProps> = ({ id }) => {
           />
         ) : (
           <ApplicationsList
-            data={mockedApplications}
+            data={myApplications}
             handleFindPulses={handleFindPulses}
           />
         )}

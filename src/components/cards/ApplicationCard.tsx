@@ -3,7 +3,7 @@ import { FC } from "react";
 import { useTranslation } from "react-i18next";
 
 interface IApplicationCardProps {
-  avatar?: string;
+  avatar: string;
   name: string;
   status: string;
 }

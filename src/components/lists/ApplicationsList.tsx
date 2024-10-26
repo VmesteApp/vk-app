@@ -2,10 +2,10 @@ import { FC } from "react";
 import { ApplicationCard } from "../cards";
 import { Button, ButtonGroup, Placeholder } from "@vkontakte/vkui";
 import { useTranslation } from "react-i18next";
+import { IApplication } from "../../types";
 
 interface IApplicationsListProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  data: any[];
+  data: IApplication[];
   handleFindPulses: () => void;
 }
 
@@ -18,7 +18,14 @@ export const ApplicationsList: FC<IApplicationsListProps> = ({
   return (
     <>
       {data.length > 0 ? (
-        data.map((el) => <ApplicationCard key={el.id} {...el} />)
+        data.map((el, index) => (
+          <ApplicationCard
+            key={index}
+            avatar={el.pulse.images[0]}
+            name={el.pulse.name}
+            status={el.status}
+          />
+        ))
       ) : (
         <Placeholder.Container>
           <Placeholder.Text>

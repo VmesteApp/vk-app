@@ -13,6 +13,12 @@ export interface IPulse {
   images: string[];
 }
 
+export interface IApplication {
+  message: string;
+  status: string;
+  pulse: IPulse;
+}
+
 export interface IPulsePreview {
   id: number;
   category: string;
