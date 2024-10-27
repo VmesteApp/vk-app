@@ -93,6 +93,7 @@ export const CreatePulseForm: FC<ICreatePulseFormProps> = ({
           htmlFor="colors"
           top={t(`createPulse.labels.tags`)}
           bottom={t(`createPulse.placeholders.tags`)}
+          required
         >
           <ChipsSelect
             id="colors"
