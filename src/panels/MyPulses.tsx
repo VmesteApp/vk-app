@@ -77,7 +77,7 @@ export const MyPulses: FC<NavIdProps> = ({ id }) => {
 
   const handlePressPulse = (pulse: IPulse) => {
     routeNavigator.push(
-      pulse.founder_id === userID
+      pulse.founder_id !== userID
         ? `/pulse/admin/${pulse.id}`
         : `/pulse/${pulse.id}`
     );
