@@ -1,9 +1,8 @@
-import bridge, { UserInfo } from "@vkontakte/vk-bridge";
 import { Avatar, RichCell } from "@vkontakte/vkui";
-import { FC, useEffect, useState } from "react";
-import api from "../../network";
+import { FC } from "react";
 import { useTranslation } from "react-i18next";
 import { useLink } from "../../hook";
+import { useUserInfo } from "../../hook/useUserInfo";
 
 interface IMemberCardProps {
   userID: number;
@@ -16,29 +15,7 @@ export const MemberCard: FC<IMemberCardProps> = ({
 }: IMemberCardProps) => {
   const { t } = useTranslation();
   const { openLink } = useLink();
-  const [userInfo, setUserInfo] = useState<UserInfo>();
-
-  useEffect(() => {
-    const fetchUserInfo = async (userID: number) => {
-      try {
-        const response = await api.get<{ userId: number; vkID: number }>(
-          `/auth/profile/${userID}/vk`
-        );
-
-        if (response.status === 200) {
-          const data = await bridge.send("VKWebAppGetUserInfo", {
-            user_id: response.data.vkID,
-          });
-
-          setUserInfo(data);
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    fetchUserInfo(userID);
-  }, [userID]);
+  const { userInfo } = useUserInfo(userID);
 
   if (!userInfo) {
     return null;
