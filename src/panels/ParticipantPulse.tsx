@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useMemo, useState } from "react";
 import {
   Panel,
   PanelHeader,
@@ -38,6 +38,11 @@ export const ParticipantPulse: FC<NavIdProps> = ({ id }) => {
     fetchPulse();
   }, [params?.id]);
 
+  const members = useMemo(
+    () => (pulse ? [pulse.founder_id, ...pulse.members] : []),
+    [pulse]
+  );
+
   if (!pulse) {
     return (
       <Panel id={id}>
@@ -58,16 +63,15 @@ export const ParticipantPulse: FC<NavIdProps> = ({ id }) => {
       </PanelHeader>
       {pulse && <PreviewPulseCard pulse={pulse} />}
 
-      <Group header={<Header>{t("participantPulse.members")}</Header>}>
-        {[
-          pulse.founder_id,
-          ...pulse.members,
-        ].map((member, index) => (
+      <Group
+        header={<Header>{t("participantPulse.members")}</Header>}
+        description={t("participantPulse.description")}
+      >
+        {members.map((member, index) => (
           <MemberCard
             key={member}
             userID={member}
             role={index === 0 ? "founder" : "member"}
-            onPress={() => {}}
           />
         ))}
       </Group>

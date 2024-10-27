@@ -108,5 +108,11 @@
       "title": "Feed",
       "subtitle": "The recommendation system will select the most interesting pulses for you."
     }
+  },
+  "participantPulse": {
+    "members": "Mitglieder",
+    "founder": "Gründer",
+    "member": "Mitglied",
+    "description": "Wenden Sie sich an den Gründer, um weitere Interaktionen zu ermöglichen. Wenden Sie sich an den technischen Support, wenn Sie verdächtige Aktivitäten feststellen."
   }
 }

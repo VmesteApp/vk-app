@@ -108,5 +108,11 @@
       "title": "Feed",
       "subtitle": "Das Empfehlungssystem wählt die interessantesten Impulse für dich aus."
     }
+  },
+  "participantPulse": {
+    "members": "Members",
+    "founder": "Founder",
+    "member": "Member",
+    "description": "Reach out to the founder for further interaction. Contact technical support if you encounter any suspicious activity."
   }
 }
