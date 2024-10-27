@@ -119,5 +119,10 @@
     "applications": "Заявки",
     "team": "Команда",
     "settings": "Настройки"
+  },
+  "adminPulseSettings": {
+    "dangerZone": "Опасная зона!",
+    "warning": "Будь осторожен, обратить действие нельзя!",
+    "deletePulse": "Удалить импульс"
   }
 }
