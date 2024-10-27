@@ -5,19 +5,17 @@ import {
   NavIdProps,
   PanelHeaderBack,
   Group,
-  MiniInfoCell,
-  Spacing,
   FixedLayout,
   CellButton,
   FormItem,
   Textarea,
-  Gallery,
 } from "@vkontakte/vkui";
 import { useParams, useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { Icon24SendOutline } from "@vkontakte/icons";
 import { IPulsePreview } from "../types";
 import api from "../network";
 import { useTranslation } from "react-i18next";
+import { PreviewPulseCard } from "../components";
 
 export const PulsePreview: FC<NavIdProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
@@ -72,42 +70,7 @@ export const PulsePreview: FC<NavIdProps> = ({ id }) => {
         <>
           <FixedLayout vertical="bottom" filled></FixedLayout>
 
-          {pulse.images.length > 0 && (
-            <Group>
-              <Gallery
-                slideWidth="90%"
-                align="center"
-                bullets={pulse.images.length > 1 && "light"}
-              >
-                {pulse.images.map((img) => (
-                  <img
-                    key={img}
-                    src={img}
-                    style={{
-                      display: "block",
-                      objectFit: "scale-down",
-                      maxHeight: 200,
-                    }}
-                  />
-                ))}
-              </Gallery>
-            </Group>
-          )}
-
-          <Group>
-            <MiniInfoCell mode="more" textWrap="full">
-              {t(`pulseCard.category.${pulse.category}`).toUpperCase()}{" "}
-              {pulse.tags.map((tag) => `#${tag.name}`).join(" ")}
-            </MiniInfoCell>
-
-            <Spacing size={12} />
-
-            {pulse.description?.split("\n").map((sentence, id) => (
-              <MiniInfoCell key={id} textWrap="full">
-                {sentence}
-              </MiniInfoCell>
-            ))}
-          </Group>
+          <PreviewPulseCard pulse={pulse} />
 
           <Group>
             <FormItem top={t("pulsePreview.form")}>

@@ -66,10 +66,9 @@ export const MyPulses: FC<NavIdProps> = ({ id }) => {
     fetchMyApplications();
   }, []);
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  // const handlePressPulse = (pulse: IPulse) => {
-  //   // routeNavigator.push(`/pulse/${pulse.id}`);
-  // };
+  const handlePressPulse = (pulse: IPulse) => {
+    routeNavigator.push(`/pulse/${pulse.id}`);
+  };
 
   const handleFindPulses = () => {
     routeNavigator.push("/");
@@ -109,7 +108,7 @@ export const MyPulses: FC<NavIdProps> = ({ id }) => {
         {selectedTabs === "pulses" ? (
           <PulsesList
             data={myPulses}
-            handlePressPulse={(pulse) => console.log(pulse)}
+            handlePressPulse={handlePressPulse}
             handleFoundPulses={handleFindPulses}
             handleCreatePulse={handleCreatePulse}
           />
