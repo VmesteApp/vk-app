@@ -7,8 +7,6 @@ import {
   Group,
   Header,
   SimpleCell,
-  Link,
-  usePlatform,
 } from "@vkontakte/vkui";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import {
@@ -17,6 +15,7 @@ import {
 } from "@vkontakte/icons";
 import { useTranslation } from "react-i18next";
 import { LANGUAGES } from "../constants";
+import { useLink } from "../hook";
 
 const getLanguageNameByCode = (code: string) => {
   const lang = LANGUAGES.find((lang) => lang.code === code);
@@ -25,7 +24,7 @@ const getLanguageNameByCode = (code: string) => {
 
 export const Profile: FC<NavIdProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
-  const platform = usePlatform();
+  const { openLink } = useLink();
   const { t, i18n } = useTranslation();
 
   return (
@@ -42,14 +41,13 @@ export const Profile: FC<NavIdProps> = ({ id }) => {
         {/* <SimpleCell expandable="auto" before={<Icon28Notifications />}>
           {t("menu.menu.notifications")}
         </SimpleCell> */}
-        <Link
-          href="https://vk.com/im?media=&sel=-227970967"
-          target={platform === "vkcom" ? "_black" : "_self"}
+        <SimpleCell
+          onClick={() => openLink("https://vk.com/im?media=&sel=-227970967")}
+          expandable="auto"
+          before={<Icon28HelpCircleOutline />}
         >
-          <SimpleCell expandable="auto" before={<Icon28HelpCircleOutline />}>
-            {t("menu.menu.techSupport")}
-          </SimpleCell>
-        </Link>
+          {t("menu.menu.techSupport")}
+        </SimpleCell>
         <SimpleCell
           onClick={() => routeNavigator.push("/about-app")}
           expandable="auto"

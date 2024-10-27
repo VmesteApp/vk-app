@@ -3,19 +3,19 @@ import { Avatar, RichCell } from "@vkontakte/vkui";
 import { FC, useEffect, useState } from "react";
 import api from "../../network";
 import { useTranslation } from "react-i18next";
+import { useLink } from "../../hook";
 
 interface IMemberCardProps {
   userID: number;
   role: string;
-  onPress: () => void;
 }
 
 export const MemberCard: FC<IMemberCardProps> = ({
   userID,
   role,
-  onPress,
 }: IMemberCardProps) => {
   const { t } = useTranslation();
+  const { openLink } = useLink();
   const [userInfo, setUserInfo] = useState<UserInfo>();
 
   useEffect(() => {
@@ -48,7 +48,7 @@ export const MemberCard: FC<IMemberCardProps> = ({
     <RichCell
       before={<Avatar size={48} src={userInfo.photo_200} />}
       caption={t(`participantPulse.${role}`)}
-      onClick={onPress}
+      onClick={() => openLink(`https://vk.com/id${userInfo.id}`)}
     >
       {userInfo.first_name} {userInfo.last_name}
     </RichCell>
