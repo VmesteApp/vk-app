@@ -7,4 +7,7 @@ export { ChangeLanguage } from "./ChangeLanguage";
 export { CreatePulse } from "./CreatePulse";
 export { AboutApp } from "./AboutApp";
 export { ParticipantPulse } from "./ParticipantPulse";
-export { AdminPulse } from './AdminPulse'
+export { AdminPulse } from "./AdminPulse";
+export { AdminPulseApplications  } from "./AdminPulseApplications";
+export { AdminPulseSettings } from "./AdminPulseSettings";
+export { AdminPulseTeam  } from "./AdminPulseTeam";

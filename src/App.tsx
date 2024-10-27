@@ -19,6 +19,9 @@ import {
 import {
   AboutApp,
   AdminPulse,
+  AdminPulseApplications,
+  AdminPulseSettings,
+  AdminPulseTeam,
   ChangeLanguage,
   CreatePulse,
   Feed,
@@ -163,6 +166,15 @@ export const App = () => {
           </View>
           <View id="about-app" activePanel="about-app">
             <AboutApp id="about-app" />
+          </View>
+          <View id="admin-pulse-applications" activePanel="admin-pulse-applications">
+            <AdminPulseApplications id="admin-pulse-applications" />
+          </View>
+          <View id="admin-pulse-settings" activePanel="admin-pulse-settings">
+            <AdminPulseSettings id="admin-pulse-settings" />
+          </View>
+          <View id="admin-pulse-team" activePanel="admin-pulse-team">
+            <AdminPulseTeam id="admin-pulse-team" />
           </View>
         </Epic>
       </SplitCol>

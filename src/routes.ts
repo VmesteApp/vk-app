@@ -21,6 +21,9 @@ export const DEFAULT_VIEW_PANELS = {
   PULSE_PREVIEW: "pulse-preview",
   PARTICIPANT_PULSE: "participant-pulse",
   ADMIN_PULSE: "admin-pulse",
+  ADMIN_PULSE_APPLICATIONS: "admin-pulse-applications",
+  ADMIN_PULSE_TEAM: "admin-pulse-team",
+  ADMIN_PULSE_SETTINGS: "admin-pulse-settings",
 } as const;
 
 export const PANELS_WITHOUT_TABBAR = [
@@ -76,6 +79,21 @@ export const routes = RoutesConfig.create([
       createPanel(
         DEFAULT_VIEW_PANELS.ABOUT_APP,
         `/about-app`,
+        []
+      ),
+      createPanel(
+        DEFAULT_VIEW_PANELS.ADMIN_PULSE_APPLICATIONS,
+        `/pulse/admin/:id/applications`,
+        []
+      ),
+      createPanel(
+        DEFAULT_VIEW_PANELS.ADMIN_PULSE_SETTINGS,
+        `/pulse/admin/:id/settings`,
+        []
+      ),
+      createPanel(
+        DEFAULT_VIEW_PANELS.ADMIN_PULSE_TEAM,
+        `/pulse/admin/:id/team`,
         []
       ),
     ]),
