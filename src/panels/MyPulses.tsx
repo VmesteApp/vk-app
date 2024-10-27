@@ -14,6 +14,8 @@ import { Icon28AddOutline } from "@vkontakte/icons";
 import { ApplicationsList, PulsesList } from "../components";
 import { IApplication, IPulse } from "../types";
 import api from "../network";
+import { getStorageValue } from "../utils";
+import { VMESTE_USER_ID } from "../constants";
 
 type TabsType = "pulses" | "applications";
 
@@ -35,6 +37,7 @@ export const MyPulses: FC<NavIdProps> = ({ id }) => {
 
   const [myPulses, setMyPulses] = useState<IPulse[]>([]);
   const [myApplications, setMyApplications] = useState<IApplication[]>([]);
+  const [userID, setUserID] = useState<number>();
 
   useEffect(() => {
     const fetchMyPulses = async () => {
@@ -61,13 +64,23 @@ export const MyPulses: FC<NavIdProps> = ({ id }) => {
         console.log(error);
       }
     };
+    const getUserID = async () => {
+      const userID = await getStorageValue(VMESTE_USER_ID);
+
+      setUserID(Number(userID));
+    };
 
     fetchMyPulses();
     fetchMyApplications();
+    getUserID();
   }, []);
 
   const handlePressPulse = (pulse: IPulse) => {
-    routeNavigator.push(`/pulse/${pulse.id}`);
+    routeNavigator.push(
+      pulse.founder_id === userID
+        ? `/pulse/admin/${pulse.id}`
+        : `/pulse/${pulse.id}`
+    );
   };
 
   const handleFindPulses = () => {
