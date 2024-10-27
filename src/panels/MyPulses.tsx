@@ -37,7 +37,7 @@ export const MyPulses: FC<NavIdProps> = ({ id }) => {
 
   const [myPulses, setMyPulses] = useState<IPulse[]>([]);
   const [myApplications, setMyApplications] = useState<IApplication[]>([]);
-  const [userID, setUserID] = useState<number>();
+  const [userID, setUserID] = useState<number>(0);
 
   useEffect(() => {
     const fetchMyPulses = async () => {
@@ -121,6 +121,7 @@ export const MyPulses: FC<NavIdProps> = ({ id }) => {
         {selectedTabs === "pulses" ? (
           <PulsesList
             data={myPulses}
+            currentUser={userID}
             handlePressPulse={handlePressPulse}
             handleFoundPulses={handleFindPulses}
             handleCreatePulse={handleCreatePulse}

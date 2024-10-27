@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 
 interface IPulsesListProps {
   data: IPulse[];
+  currentUser: number;
   handlePressPulse: (pulse: IPulse) => void;
   handleFoundPulses: () => void;
   handleCreatePulse: () => void;
@@ -13,6 +14,7 @@ interface IPulsesListProps {
 
 export const PulsesList: FC<IPulsesListProps> = ({
   data,
+  currentUser,
   handlePressPulse,
   handleFoundPulses,
   handleCreatePulse,
@@ -28,7 +30,7 @@ export const PulsesList: FC<IPulsesListProps> = ({
             key={el.id}
             avatar={el.images[0] || ""}
             name={el.name}
-            role={""}
+            role={currentUser === el.founder_id ? "founder" : "member"}
           />
         ))
       ) : (
