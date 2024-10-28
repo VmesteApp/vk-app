@@ -7,15 +7,16 @@ import {
   Tabs,
   HorizontalScroll,
   TabsItem,
+  Spinner,
 } from "@vkontakte/vkui";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { useTranslation } from "react-i18next";
 import { Icon28AddOutline } from "@vkontakte/icons";
 import { ApplicationsList, PulsesList } from "../components";
-import { IApplication, IPulse } from "../types";
-import api from "../network";
+import { IPulse } from "../types";
 import { getStorageValue } from "../utils";
 import { VMESTE_USER_ID } from "../constants";
+import { useMyApplications, useMyPulses } from "../hook";
 
 type TabsType = "pulses" | "applications";
 
@@ -35,43 +36,18 @@ export const MyPulses: FC<NavIdProps> = ({ id }) => {
   const [selectedTabs, setSelectedTabs] = useState<TabsType>("pulses");
   const routeNavigator = useRouteNavigator();
 
-  const [myPulses, setMyPulses] = useState<IPulse[]>([]);
-  const [myApplications, setMyApplications] = useState<IApplication[]>([]);
+  const { myPulses, loading: loadingMyPulses } = useMyPulses();
+  const { myApplications, loading: loadingMyApplications } =
+    useMyApplications();
   const [userID, setUserID] = useState<number>(0);
 
   useEffect(() => {
-    const fetchMyPulses = async () => {
-      try {
-        const response = await api.get<{ pulses: IPulse[] }>("/content/pulses");
-
-        if (response.status === 200) {
-          setMyPulses(response.data.pulses);
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    const fetchMyApplications = async () => {
-      try {
-        const response = await api.get<{ application: IApplication[] }>(
-          "/content/application/my/"
-        );
-
-        if (response.status === 200) {
-          setMyApplications(response.data.application);
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    };
     const getUserID = async () => {
       const userID = await getStorageValue(VMESTE_USER_ID);
 
       setUserID(Number(userID));
     };
 
-    fetchMyPulses();
-    fetchMyApplications();
     getUserID();
   }, []);
 
@@ -119,13 +95,19 @@ export const MyPulses: FC<NavIdProps> = ({ id }) => {
 
       <Group>
         {selectedTabs === "pulses" ? (
-          <PulsesList
-            data={myPulses}
-            currentUser={userID}
-            handlePressPulse={handlePressPulse}
-            handleFoundPulses={handleFindPulses}
-            handleCreatePulse={handleCreatePulse}
-          />
+          loadingMyPulses ? (
+            <Spinner />
+          ) : (
+            <PulsesList
+              data={myPulses}
+              currentUser={userID}
+              handlePressPulse={handlePressPulse}
+              handleFoundPulses={handleFindPulses}
+              handleCreatePulse={handleCreatePulse}
+            />
+          )
+        ) : loadingMyApplications ? (
+          <Spinner />
         ) : (
           <ApplicationsList
             data={myApplications}
