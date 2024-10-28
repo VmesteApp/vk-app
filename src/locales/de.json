@@ -4,7 +4,7 @@
     "search": "Suche",
     "filters": "Filter",
     "selectTags": "Wähle die Tags, die dich interessieren",
-    "notSelected": "Keine ausgewählt"
+    "notSelected": "Nicht ausgewählt"
   },
   "myPulses": {
     "title": "Meine Impulse",
@@ -17,17 +17,17 @@
       "member": "Mitglied"
     },
     "status": {
-      "pending": "Ausstehend",
+      "pending": "In Bearbeitung",
       "approved": "Genehmigt",
       "rejected": "Abgelehnt"
     },
     "placeholders": {
       "pulses": "Hier findest du alle Impulse, die du erstellt hast oder an denen du teilnimmst.",
-      "applications": "Hier findest du alle deine Bewerbungen"
+      "applications": "Hier sind all deine Bewerbungen zusammengestellt."
     },
     "btns": {
-      "foundPulse": "Einen Impuls gründen",
-      "findPulses": "Impulse finden"
+      "foundPulse": "Impuls gründen",
+      "findPulses": "Impulse suchen"
     }
   },
   "menu": {
@@ -43,31 +43,31 @@
     "menu": {
       "notifications": "Benachrichtigungen",
       "techSupport": "Technischer Support",
-      "aboutAppAndCerts": "Über die App und Hilfe"
+      "aboutAppAndCerts": "Über die App, Hilfestellungen"
     }
   },
   "changeLanguage": {
     "title": "Sprache"
   },
   "createPulse": {
-    "title": "Einen Impuls erstellen",
+    "title": "Impuls erstellen",
     "labels": {
       "tags": "Tags",
       "name": "Name des Impulses",
-      "shortDescription": "Beschreibung für \"Feed\"",
+      "shortDescription": "Beschreibung für den \"Feed\"",
       "description": "Beschreibung des Impulses",
       "category": "Kategorie",
-      "event": "Veranstaltung",
+      "event": "Ereignis",
       "project": "Projekt",
-      "images": "Lade deine Fotos hoch"
+      "images": "Lade dein Foto hoch"
     },
     "placeholders": {
       "tags": "mindestens 3 Tags",
       "shortDescription": "Ein Absatz, aber ein sehr guter!",
-      "description": "Erzähl uns mehr über deinen Impuls",
-      "event": "Um Leute für deine Veranstaltung zu finden: Events, Produktankündigungen usw.",
-      "project": "Um Leute für dein Projekt zu finden: Teams für Wettbewerbe, Startups usw.",
-      "images": "Ein Foto ist erforderlich. Wir empfehlen, mindestens 3 Fotos hochzuladen.",
+      "description": "Erzähl mehr über deinen Impuls",
+      "event": "Um Leute für dein Event zu finden: Veranstaltungen, Produktankündigungen usw.",
+      "project": "Um Leute für dein Projekt zu finden: Teams für Wettbewerbe, Start-ups usw.",
+      "images": "Mindestens ein Foto ist obligatorisch. Wir empfehlen, mindestens 3 Fotos hochzuladen.",
       "avatar": "Das erste Foto in der Liste wird zum Avatar des Impulses."
     },
     "buttons": {
@@ -76,33 +76,33 @@
     }
   },
   "aboutApp": {
-    "title": "Über die App, Hilfe",
-    "aboutApp": "Die \"Together\" App wurde entwickelt, damit du Gleichgesinnte finden und deine coolsten Ideen umsetzen kannst.",
-    "aboutCommunity": "Die App wird von der gleichnamigen Community entwickelt. Mehr über uns findest du in",
-    "vkGroup": "der offiziellen VK-Gruppe der Anwendung.",
+    "title": "Über die App, Hilfestellungen",
+    "aboutApp": "Die App \"Zusammen\" wurde geschaffen, damit du Gleichgesinnte finden und deine coolsten Ideen verwirklichen kannst.",
+    "aboutCommunity": "Die App wird von der gleichnamigen Community entwickelt. Mehr über uns findest du in der",
+    "vkGroup": "offiziellen VK-Gruppe der App.",
     "agreements": "Vereinbarungen",
     "userAgreement": "Nutzungsbedingungen",
-    "personalDataAgreement": "Datenschutzvereinbarung"
+    "personalDataAgreement": "Vereinbarung zur Verarbeitung personenbezogener Daten"
   },
   "pulseCard": {
     "category": {
-      "event": "Veranstaltung",
+      "event": "Ereignis",
       "project": "Projekt"
     }
   },
   "pulsePreview": {
-    "form": "Formular",
+    "form": "Fragebogen",
     "placeholder": "Erzähl uns von dir und deiner Motivation, dem Impuls beizutreten",
-    "submit": "Bewerbung einreichen"
+    "submit": "Bewerben"
   },
   "onboarding": {
     "app": {
-      "title": "Networking-Plattform",
-      "subtitle": "Eine Plattform, um Gleichgesinnte zu finden und dein Traumteam zu bilden."
+      "title": "Netzwerk",
+      "subtitle": "Plattform, um Gleichgesinnte zu finden und das Traumteam zu bilden."
     },
     "pulse": {
       "title": "Impuls",
-      "subtitle": "Dies ist eine Aktivität, bei der du nach Gleichgesinnten suchst, zum Beispiel ein Projekt oder eine Veranstaltung."
+      "subtitle": "Das ist eine Aktivität, bei der du Gleichgesinnte suchst, zum Beispiel ein Projekt oder eine Veranstaltung."
     },
     "lenta": {
       "title": "Feed",
@@ -110,9 +110,24 @@
     }
   },
   "participantPulse": {
-    "members": "Members",
-    "founder": "Founder",
-    "member": "Member",
-    "description": "Reach out to the founder for further interaction. Contact technical support if you encounter any suspicious activity."
+    "members": "Mitglieder",
+    "founder": "Gründer",
+    "member": "Mitglied",
+    "description": "Wende dich an den Gründer, um weitere Schritte zu unternehmen. Wenn verdächtige Aktivitäten auftreten, wende dich an den technischen Support."
+  },
+  "adminPulse": {
+    "applications": "Bewerbungen",
+    "team": "Team",
+    "settings": "Einstellungen"
+  },
+  "adminPulseSettings": {
+    "dangerZone": "Gefahrenzone!",
+    "warning": "Sei vorsichtig, die Aktion kann nicht rückgängig gemacht werden!",
+    "deletePulse": "Impuls löschen"
+  },
+  "adminPulseApplications": {
+    "applicationsNotFound": "Es gibt derzeit keine Bewerbungen zur Prüfung.",
+    "approve": "Annehmen",
+    "reject": "Ablehnen"
   }
 }

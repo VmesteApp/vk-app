@@ -3,8 +3,8 @@
     "title": "Feed",
     "search": "Search",
     "filters": "Filters",
-    "selectTags": "Select tags you're interested in",
-    "notSelected": "None selected"
+    "selectTags": "Select tags you are interested in",
+    "notSelected": "Not selected"
   },
   "myPulses": {
     "title": "My Pulses",
@@ -22,11 +22,11 @@
       "rejected": "Rejected"
     },
     "placeholders": {
-      "pulses": "Here you'll find all the pulses you created or participate in.",
-      "applications": "Here you'll find all your applications"
+      "pulses": "Here you will find all the pulses you created or participate in.",
+      "applications": "Here are all your applications"
     },
     "btns": {
-      "foundPulse": "Found a Pulse",
+      "foundPulse": "Found Pulse",
       "findPulses": "Find Pulses"
     }
   },
@@ -38,28 +38,28 @@
     },
     "settings": {
       "lang": "Language",
-      "pushNotifications": "Push Notifications"
+      "pushNotifications": "Push notifications"
     },
     "menu": {
       "notifications": "Notifications",
-      "techSupport": "Tech Support",
-      "aboutAppAndCerts": "About the App and Certs"
+      "techSupport": "Tech. support",
+      "aboutAppAndCerts": "About the app, help"
     }
   },
   "changeLanguage": {
     "title": "Language"
   },
   "createPulse": {
-    "title": "Create a Pulse",
+    "title": "Create Pulse",
     "labels": {
       "tags": "Tags",
-      "name": "Pulse Name",
+      "name": "Pulse name",
       "shortDescription": "Description for \"Feed\"",
-      "description": "Pulse Description",
+      "description": "Pulse description",
       "category": "Category",
       "event": "Event",
       "project": "Project",
-      "images": "Upload your photos"
+      "images": "Upload your photo"
     },
     "placeholders": {
       "tags": "at least 3 tags",
@@ -72,17 +72,17 @@
     },
     "buttons": {
       "publish": "Publish",
-      "openGallery": "Open Gallery"
+      "openGallery": "Open gallery"
     }
   },
   "aboutApp": {
-    "title": "About the App, Help",
-    "aboutApp": "The \"Together\" app was created so that you can find like-minded people and implement your coolest ideas.",
-    "aboutCommunity": "The app is being developed by the community of the same name. You can find more about us in",
+    "title": "About the app, help",
+    "aboutApp": "\"Together\" app is designed to help you find like-minded people and implement your coolest ideas.",
+    "aboutCommunity": "The app is developed by the community of the same name. More information about us can be found in",
     "vkGroup": "the official VK group of the application.",
     "agreements": "Agreements",
-    "userAgreement": "User Agreement",
-    "personalDataAgreement": "Personal Data Processing Agreement"
+    "userAgreement": "User agreement",
+    "personalDataAgreement": "Personal data processing agreement"
   },
   "pulseCard": {
     "category": {
@@ -93,16 +93,16 @@
   "pulsePreview": {
     "form": "Form",
     "placeholder": "Tell us about yourself and your motivation to join the pulse",
-    "submit": "Submit Application"
+    "submit": "Submit application"
   },
   "onboarding": {
     "app": {
-      "title": "Networking Platform",
-      "subtitle": "A platform for finding like-minded people and creating your dream team."
+      "title": "Networking platform",
+      "subtitle": "Platform for finding like-minded people and creating your dream team."
     },
     "pulse": {
       "title": "Pulse",
-      "subtitle": "This is an activity where you're looking for like-minded people, for example, a project or an event."
+      "subtitle": "This is an activity where you find like-minded people, for example, a project or event."
     },
     "lenta": {
       "title": "Feed",
@@ -110,9 +110,24 @@
     }
   },
   "participantPulse": {
-    "members": "Mitglieder",
-    "founder": "Gründer",
-    "member": "Mitglied",
-    "description": "Wenden Sie sich an den Gründer, um weitere Interaktionen zu ermöglichen. Wenden Sie sich an den technischen Support, wenn Sie verdächtige Aktivitäten feststellen."
+    "members": "Members",
+    "founder": "Founder",
+    "member": "Member",
+    "description": "Contact the founder for further interaction. In case of suspicious actions, contact tech support."
+  },
+  "adminPulse": {
+    "applications": "Applications",
+    "team": "Team",
+    "settings": "Settings"
+  },
+  "adminPulseSettings": {
+    "dangerZone": "Danger zone!",
+    "warning": "Be careful, the action cannot be reversed!",
+    "deletePulse": "Delete pulse"
+  },
+  "adminPulseApplications": {
+    "applicationsNotFound": "There are currently no applications for consideration.",
+    "approve": "Approve",
+    "reject": "Reject"
   }
 }
