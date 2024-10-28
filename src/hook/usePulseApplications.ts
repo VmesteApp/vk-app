@@ -34,5 +34,6 @@ export const usePulseApplications = (pulseID: number) => {
     applications,
     loading,
     fetchApplications,
+    setApplications,
   };
 };

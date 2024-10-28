@@ -22,7 +22,7 @@ export interface IApplication {
 
 export interface IApplicationWithCandidate {
   pulse_id: number;
-  application_id: number;
+  id: number;
   candidate_id: number;
   message: string;
   status: "PENDING" | "APPROVED" | "REJECTED";
