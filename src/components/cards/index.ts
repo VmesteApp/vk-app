@@ -3,3 +3,4 @@ export { MyPulseCard } from "./MyPulseCard";
 export { ApplicationCard } from "./ApplicationCard";
 export { PreviewPulseCard } from "./PreviewPulseCard";
 export { MemberCard } from "./MemberCard";
+export { ApplicationCardWithActions } from "./ApplicationCardWithActions";

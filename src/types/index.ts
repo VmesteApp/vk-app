@@ -20,6 +20,14 @@ export interface IApplication {
   pulse: IPulse;
 }
 
+export interface IApplicationWithCandidate {
+  pulse_id: number;
+  application_id: number;
+  candidate_id: number;
+  message: string;
+  status: "PENDING" | "APPROVED" | "REJECTED";
+}
+
 export interface IPulsePreview {
   id: number;
   category: string;

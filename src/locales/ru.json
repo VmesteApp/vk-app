@@ -124,5 +124,10 @@
     "dangerZone": "Опасная зона!",
     "warning": "Будь осторожен, обратить действие нельзя!",
     "deletePulse": "Удалить импульс"
+  },
+  "adminPulseApplications": {
+    "applicationsNotFound": "Пока заявок на рассмотрение нет.",
+    "approve": "Принять",
+    "reject": "Отклонить"
   }
 }
