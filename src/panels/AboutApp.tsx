@@ -17,10 +17,12 @@ import {
 import { FC } from "react";
 import { useTranslation } from "react-i18next";
 import logoColor from "../assets/img/logo-color.png";
+import { useLink } from "../hook";
 
 export const AboutApp: FC<NavIdProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
   const { t } = useTranslation();
+  const { openLink } = useLink();
 
   return (
     <Panel id={id}>
@@ -46,12 +48,24 @@ export const AboutApp: FC<NavIdProps> = ({ id }) => {
         <Title>{t("aboutApp.agreements")}</Title>
       </Cell>
       <MiniInfoCell mode="more" textWrap="full">
-        <Link href="https://docs.google.com/document/d/1JIu0TRwWH6336eUJyKLO_42CXq4K9G0HyQ4T_OzNkLs/edit?usp=sharing">
+        <Link
+          onClick={() =>
+            openLink(
+              "https://docs.google.com/document/d/1JIu0TRwWH6336eUJyKLO_42CXq4K9G0HyQ4T_OzNkLs/edit?usp=sharing"
+            )
+          }
+        >
           {t("aboutApp.userAgreement")}
         </Link>
       </MiniInfoCell>
       <MiniInfoCell mode="more" textWrap="full">
-        <Link href="https://docs.google.com/document/d/15CC9RHjnWsVj8cJau1-Yflt0jg4gJupu-rpZgLLnkr0/edit?usp=sharing">
+        <Link
+          onClick={() =>
+            openLink(
+              "https://docs.google.com/document/d/15CC9RHjnWsVj8cJau1-Yflt0jg4gJupu-rpZgLLnkr0/edit?usp=sharing"
+            )
+          }
+        >
           {t("aboutApp.personalDataAgreement")}
         </Link>
       </MiniInfoCell>

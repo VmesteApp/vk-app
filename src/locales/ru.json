@@ -73,7 +73,9 @@
     "buttons": {
       "publish": "Опубликовать",
       "openGallery": "Открыть галерею"
-    }
+    },
+    "publishButtonDescription": "Нажимая \"Опубликовать\", вы принимаете",
+    "userAgreement": "Пользовательское соглашение"
   },
   "aboutApp": {
     "title": "О приложении, справки",

@@ -73,7 +73,9 @@
     "buttons": {
       "publish": "Publish",
       "openGallery": "Open gallery"
-    }
+    },
+    "publishButtonDescription": "By clicking \"Publish\", you agree",
+    "userAgreement": "User agreement"
   },
   "aboutApp": {
     "title": "About the app, help",

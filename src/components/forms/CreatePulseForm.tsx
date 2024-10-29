@@ -13,9 +13,12 @@ import {
   Cell,
   Image,
   Header,
+  Link,
+  MiniInfoCell,
 } from "@vkontakte/vkui";
 import { FC, useMemo } from "react";
 import { useTranslation } from "react-i18next";
+import { useLink } from "../../hook";
 
 interface IOption {
   label: string;
@@ -46,6 +49,7 @@ export const CreatePulseForm: FC<ICreatePulseFormProps> = ({
   disabled,
 }) => {
   const { t } = useTranslation();
+  const { openLink } = useLink();
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const filelist = event.target.files;
@@ -220,7 +224,22 @@ export const CreatePulseForm: FC<ICreatePulseFormProps> = ({
           </Group>
         )}
 
-        <FormItem>
+        <FormItem
+          bottom={
+            <MiniInfoCell style={{ paddingLeft: 0 }} textWrap="full">
+              {t("createPulse.publishButtonDescription")}{" "}
+              <Link
+                onClick={() =>
+                  openLink(
+                    "https://docs.google.com/document/d/1JIu0TRwWH6336eUJyKLO_42CXq4K9G0HyQ4T_OzNkLs/edit?usp=sharing"
+                  )
+                }
+              >
+                {t("createPulse.userAgreement")}
+              </Link>
+            </MiniInfoCell>
+          }
+        >
           <Button
             disabled={disabled}
             type="submit"

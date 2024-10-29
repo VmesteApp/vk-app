@@ -73,7 +73,9 @@
     "buttons": {
       "publish": "Veröffentlichen",
       "openGallery": "Galerie öffnen"
-    }
+    },
+    "publishButtonDescription": "Indem Sie auf „Veröffentlichen“ klicken, akzeptieren Sie",
+    "userAgreement": "Nutzungsbedingungen"
   },
   "aboutApp": {
     "title": "Über die App, Hilfestellungen",

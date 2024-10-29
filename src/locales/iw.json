@@ -73,7 +73,9 @@
     "buttons": {
       "publish": "פרסם",
       "openGallery": "פתח גלריה"
-    }
+    },
+    "publishButtonDescription": "על ידי לחיצה על \"פרסם\", אתה מקבל",
+    "userAgreement": "הסכם משתמש"
   },
   "aboutApp": {
     "title": "אודות האפליקציה, עזרה",
