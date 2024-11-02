@@ -138,5 +138,10 @@
     "placeholder": "Tell us in detail what seems suspicious about the impulse",
     "info": "Does this impulse seem suspicious to you? Here you can file a complaint about the impulse. Moderators will review it.",
     "submit": "Submit Complaint"
+  },
+  "blockedPulse": {
+    "goToTechSupport": "Contact Technical Support",
+    "header": "This pulse was blocked due to a violation of community rules",
+    "description": "Unfortunately, moderation was forced to block your pulse due to a violation of community rules. You can always contact our technical support if you believe the decision was made in error."
   }
 }

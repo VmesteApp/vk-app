@@ -138,5 +138,10 @@
     "placeholder": "Erzählen Sie uns im Detail, was Ihnen am Impuls verdächtig erscheint",
     "info": "Scheint Ihnen dieser Impuls verdächtig? Hier können Sie eine Beschwerde über den Impuls einreichen. Moderatoren werden sie überprüfen.",
     "submit": "Beschwerde einreichen"
+  },
+  "blockedPulse": {
+    "goToTechSupport": "Technischen Support kontaktieren",
+    "header": "Dieser Impuls wurde aufgrund eines Verstoßes gegen die Community-Richtlinien blockiert",
+    "description": "Leider musste die Moderation deinen Impuls aufgrund eines Verstoßes gegen die Community-Richtlinien blockieren. Du kannst dich jederzeit an unseren technischen Support wenden, wenn du der Meinung bist, dass die Entscheidung falsch getroffen wurde."
   }
 }

@@ -42,7 +42,9 @@ export const AboutApp: FC<NavIdProps> = ({ id }) => {
       </SimpleCell>
       <MiniInfoCell mode="accent" textWrap="full">
         {t("aboutApp.aboutCommunity")}{" "}
-        <Link href="https://vk.com/club227970967">{t("aboutApp.vkGroup")}</Link>
+        <Link onClick={() => openLink("https://vk.com/club227970967")}>
+          {t("aboutApp.vkGroup")}
+        </Link>
       </MiniInfoCell>
       <Cell>
         <Title>{t("aboutApp.agreements")}</Title>

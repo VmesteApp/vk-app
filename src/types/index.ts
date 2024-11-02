@@ -31,6 +31,7 @@ export interface IApplicationWithCandidate {
 
 export interface IPulsePreview {
   id: number;
+  blocked: boolean;
   category: string;
   name: string;
   founder_id: number;
