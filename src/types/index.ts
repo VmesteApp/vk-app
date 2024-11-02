@@ -12,6 +12,7 @@ export interface IPulse {
   short_description: string;
   images: string[];
   tags: ITag[];
+  blocked: boolean;
 }
 
 export interface IApplication {

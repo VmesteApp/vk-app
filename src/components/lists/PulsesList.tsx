@@ -30,6 +30,7 @@ export const PulsesList: FC<IPulsesListProps> = ({
             key={el.id}
             avatar={el.images[0] || ""}
             name={el.name}
+            blocked={el.blocked}
             role={currentUser === el.founder_id ? "founder" : "member"}
           />
         ))
