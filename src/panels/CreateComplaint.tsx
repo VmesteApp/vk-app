@@ -17,6 +17,7 @@ import { useParams, useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { useTranslation } from "react-i18next";
 import { usePulsePreview } from "../hook";
 import { Icon24SendOutline } from "@vkontakte/icons";
+import api from "../network";
 
 export const CreateComplaint: FC<NavIdProps> = ({ id }) => {
   const { t } = useTranslation();
@@ -25,6 +26,27 @@ export const CreateComplaint: FC<NavIdProps> = ({ id }) => {
   const [message, setMessage] = useState<string>("");
 
   const { pulse, loading } = usePulsePreview(Number(params?.id));
+
+  const handleCreateComplaint = async () => {
+    if (!message.length || !pulse) return;
+
+    try {
+      const body = {
+        message,
+      };
+
+      const response = await api.post(
+        `/content/pulses/${pulse.id}/complaint`,
+        body
+      );
+
+      if (response.status) {
+        routeNavigator.back();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   if (loading || !pulse) {
     return (
@@ -59,9 +81,7 @@ export const CreateComplaint: FC<NavIdProps> = ({ id }) => {
       </Group>
 
       <Group>
-        <MiniInfoCell textWrap="full">
-          {t("complaints.info")}
-        </MiniInfoCell>
+        <MiniInfoCell textWrap="full">{t("complaints.info")}</MiniInfoCell>
         <FormItem
           topNode={
             <FormItem.Top>
@@ -81,7 +101,7 @@ export const CreateComplaint: FC<NavIdProps> = ({ id }) => {
         </FormItem>
         <CellButton
           disabled={!message.length}
-          onClick={() => {}}
+          onClick={handleCreateComplaint}
           centered
           before={<Icon24SendOutline />}
         >
