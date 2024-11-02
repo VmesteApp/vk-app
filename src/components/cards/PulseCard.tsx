@@ -1,7 +1,8 @@
-import { ContentCard, Group, Text, Title } from "@vkontakte/vkui";
+import { ContentCard, Flex, Group, Text, Title } from "@vkontakte/vkui";
 import { FC } from "react";
 import { IPulse } from "../../types";
 import { useTranslation } from "react-i18next";
+import { PulsePopover } from "../popovers";
 
 interface IPulseCardProps {
   pulse: IPulse;
@@ -18,7 +19,14 @@ export const PulseCard: FC<IPulseCardProps> = ({
   return (
     <ContentCard
       src={logo}
-      header={<Title level="2">{pulse.name}</Title>}
+      header={
+        <Flex direction="row" align="center">
+          <Title level="2" style={{ flex: 1 }}>
+            {pulse.name}
+          </Title>
+          <PulsePopover />
+        </Flex>
+      }
       onClick={onPress}
       caption={
         <Group mode="plain">

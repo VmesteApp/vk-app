@@ -11,7 +11,7 @@ import {
   Textarea,
 } from "@vkontakte/vkui";
 import { useParams, useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
-import { Icon24SendOutline } from "@vkontakte/icons";
+import { Icon24FlagStart, Icon24SendOutline } from "@vkontakte/icons";
 import { IPulsePreview } from "../types";
 import api from "../network";
 import { useTranslation } from "react-i18next";
@@ -86,6 +86,16 @@ export const PulsePreview: FC<NavIdProps> = ({ id }) => {
               before={<Icon24SendOutline />}
             >
               {t("pulsePreview.submit")}
+            </CellButton>
+          </Group>
+
+          <Group>
+            <CellButton
+              centered
+              before={<Icon24FlagStart />}
+              mode="danger"
+            >
+              {t("Пожаловаться")}
             </CellButton>
           </Group>
         </>
