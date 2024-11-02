@@ -131,5 +131,12 @@
     "applicationsNotFound": "There are currently no applications for consideration.",
     "approve": "Approve",
     "reject": "Reject"
+  },
+  "complaints": {
+    "complaint": "Complaint",
+    "title": "Create Complaint",
+    "placeholder": "Tell us in detail what seems suspicious about the impulse",
+    "info": "Does this impulse seem suspicious to you? Here you can file a complaint about the impulse. Moderators will review it.",
+    "submit": "Submit Complaint"
   }
 }

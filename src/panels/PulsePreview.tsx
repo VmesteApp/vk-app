@@ -98,7 +98,7 @@ export const PulsePreview: FC<NavIdProps> = ({ id }) => {
                 routeNavigator.push(`/pulse/${pulse.id}/complaint`)
               }
             >
-              {t("Пожаловаться")}
+              {t("complaints.complaint")}
             </CellButton>
           </Group>
         </>

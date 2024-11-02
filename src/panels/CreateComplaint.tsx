@@ -1,19 +1,28 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import {
   Panel,
   PanelHeader,
   NavIdProps,
   Spinner,
   PanelHeaderBack,
+  RichCell,
+  Avatar,
+  Group,
+  FormItem,
+  Textarea,
+  CellButton,
+  MiniInfoCell,
 } from "@vkontakte/vkui";
 import { useParams, useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
-// import { useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import { usePulsePreview } from "../hook";
+import { Icon24SendOutline } from "@vkontakte/icons";
 
 export const CreateComplaint: FC<NavIdProps> = ({ id }) => {
-  // const { t } = useTranslation();
+  const { t } = useTranslation();
   const routeNavigator = useRouteNavigator();
   const params = useParams<"id">();
+  const [message, setMessage] = useState<string>("");
 
   const { pulse, loading } = usePulsePreview(Number(params?.id));
 
@@ -33,8 +42,52 @@ export const CreateComplaint: FC<NavIdProps> = ({ id }) => {
       <PanelHeader
         before={<PanelHeaderBack onClick={() => routeNavigator.back()} />}
       >
-        Создать жалобу
+        {t("complaints.title")}
       </PanelHeader>
+
+      <Group>
+        <RichCell
+          onClick={() => routeNavigator.push(`/pulse/preview/${pulse.id}`)}
+          before={
+            pulse.images.length > 0 ? (
+              <Avatar size={48} src={pulse.images[0]} />
+            ) : null
+          }
+        >
+          {pulse.name}
+        </RichCell>
+      </Group>
+
+      <Group>
+        <MiniInfoCell textWrap="full">
+          {t("complaints.info")}
+        </MiniInfoCell>
+        <FormItem
+          topNode={
+            <FormItem.Top>
+              <FormItem.TopAside required>
+                {message.length}/200
+              </FormItem.TopAside>
+            </FormItem.Top>
+          }
+          required
+        >
+          <Textarea
+            rows={15}
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            placeholder={t("complaints.placeholder")}
+          />
+        </FormItem>
+        <CellButton
+          disabled={!message.length}
+          onClick={() => {}}
+          centered
+          before={<Icon24SendOutline />}
+        >
+          {t("complaints.submit")}
+        </CellButton>
+      </Group>
     </Panel>
   );
 };

@@ -131,5 +131,12 @@
     "applicationsNotFound": "Es gibt derzeit keine Bewerbungen zur Prüfung.",
     "approve": "Annehmen",
     "reject": "Ablehnen"
+  },
+  "complaints": {
+    "complaint": "Beschwerde",
+    "title": "Beschwerde einreichen",
+    "placeholder": "Erzählen Sie uns im Detail, was Ihnen am Impuls verdächtig erscheint",
+    "info": "Scheint Ihnen dieser Impuls verdächtig? Hier können Sie eine Beschwerde über den Impuls einreichen. Moderatoren werden sie überprüfen.",
+    "submit": "Beschwerde einreichen"
   }
 }

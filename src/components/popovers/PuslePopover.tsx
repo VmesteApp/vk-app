@@ -1,12 +1,15 @@
 import { FC } from "react";
 import { Button, CellButton, Popover } from "@vkontakte/vkui";
 import { Icon16MoreVertical, Icon24FlagStart } from "@vkontakte/icons";
+import { useTranslation } from "react-i18next";
 
 interface IPulsePopover {
   onPressComplaint: () => void;
 }
 
 export const PulsePopover: FC<IPulsePopover> = ({ onPressComplaint }) => {
+  const { t } = useTranslation();
+
   return (
     <Popover
       noStyling
@@ -36,7 +39,7 @@ export const PulsePopover: FC<IPulsePopover> = ({ onPressComplaint }) => {
             mode="danger"
             size={16}
           >
-            Пожаловаться
+            {t("complaints.complaint")}
           </CellButton>
         </div>
       )}
