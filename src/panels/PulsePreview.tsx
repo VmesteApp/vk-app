@@ -94,6 +94,9 @@ export const PulsePreview: FC<NavIdProps> = ({ id }) => {
               centered
               before={<Icon24FlagStart />}
               mode="danger"
+              onClick={() =>
+                routeNavigator.push(`/pulse/${pulse.id}/complaint`)
+              }
             >
               {t("Пожаловаться")}
             </CellButton>

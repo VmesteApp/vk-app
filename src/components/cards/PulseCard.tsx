@@ -3,6 +3,7 @@ import { FC } from "react";
 import { IPulse } from "../../types";
 import { useTranslation } from "react-i18next";
 import { PulsePopover } from "../popovers";
+import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 
 interface IPulseCardProps {
   pulse: IPulse;
@@ -14,6 +15,7 @@ export const PulseCard: FC<IPulseCardProps> = ({
   onPress,
 }: IPulseCardProps) => {
   const { t } = useTranslation();
+  const routeNavigator = useRouteNavigator();
   const logo = pulse.images.length > 0 ? pulse.images[0] : "";
 
   return (
@@ -24,7 +26,11 @@ export const PulseCard: FC<IPulseCardProps> = ({
           <Title level="2" style={{ flex: 1 }}>
             {pulse.name}
           </Title>
-          <PulsePopover />
+          <PulsePopover
+            onPressComplaint={() =>
+              routeNavigator.push(`/pulse/${pulse.id}/complaint`)
+            }
+          />
         </Flex>
       }
       onClick={onPress}

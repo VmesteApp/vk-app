@@ -2,7 +2,11 @@ import { FC } from "react";
 import { Button, CellButton, Popover } from "@vkontakte/vkui";
 import { Icon16MoreVertical, Icon24FlagStart } from "@vkontakte/icons";
 
-export const PulsePopover: FC = () => {
+interface IPulsePopover {
+  onPressComplaint: () => void;
+}
+
+export const PulsePopover: FC<IPulsePopover> = ({ onPressComplaint }) => {
   return (
     <Popover
       noStyling
@@ -25,7 +29,10 @@ export const PulsePopover: FC = () => {
           <CellButton
             role="menuitem"
             before={<Icon24FlagStart />}
-            onClick={onClose}
+            onClick={() => {
+              onClose();
+              onPressComplaint();
+            }}
             mode="danger"
             size={16}
           >

@@ -23,6 +23,7 @@ import {
   AdminPulseSettings,
   AdminPulseTeam,
   ChangeLanguage,
+  CreateComplaint,
   CreatePulse,
   Feed,
   MyPulses,
@@ -167,7 +168,10 @@ export const App = () => {
           <View id="about-app" activePanel="about-app">
             <AboutApp id="about-app" />
           </View>
-          <View id="admin-pulse-applications" activePanel="admin-pulse-applications">
+          <View
+            id="admin-pulse-applications"
+            activePanel="admin-pulse-applications"
+          >
             <AdminPulseApplications id="admin-pulse-applications" />
           </View>
           <View id="admin-pulse-settings" activePanel="admin-pulse-settings">
@@ -175,6 +179,9 @@ export const App = () => {
           </View>
           <View id="admin-pulse-team" activePanel="admin-pulse-team">
             <AdminPulseTeam id="admin-pulse-team" />
+          </View>
+          <View id="create-complaint" activePanel="create-complaint">
+            <CreateComplaint id="create-complaint" />
           </View>
         </Epic>
       </SplitCol>

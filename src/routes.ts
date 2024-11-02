@@ -24,6 +24,7 @@ export const DEFAULT_VIEW_PANELS = {
   ADMIN_PULSE_APPLICATIONS: "admin-pulse-applications",
   ADMIN_PULSE_TEAM: "admin-pulse-team",
   ADMIN_PULSE_SETTINGS: "admin-pulse-settings",
+  CREATE_COMPLAINT: "create-complaint",
 } as const;
 
 export const PANELS_WITHOUT_TABBAR = [
@@ -36,51 +37,15 @@ export const routes = RoutesConfig.create([
   createRoot(DEFAULT_ROOT, [
     createView(DEFAULT_VIEW, [
       createPanel(DEFAULT_VIEW_PANELS.FEED, "/", []),
-      createPanel(
-        DEFAULT_VIEW_PANELS.PROFILE,
-        `/profile`,
-        []
-      ),
-      createPanel(
-        DEFAULT_VIEW_PANELS.NOTIFICATIONS,
-        `/notifications`,
-        []
-      ),
-      createPanel(
-        DEFAULT_VIEW_PANELS.PARTICIPANT_PULSE,
-        `/pulse/:id`,
-        []
-      ),
-      createPanel(
-        DEFAULT_VIEW_PANELS.ADMIN_PULSE,
-        `/pulse/admin/:id`,
-        []
-      ),
-      createPanel(
-        DEFAULT_VIEW_PANELS.PULSE_PREVIEW,
-        `/pulse/preview/:id`,
-        []
-      ),
-      createPanel(
-        DEFAULT_VIEW_PANELS.CREATE_PULSE,
-        `/pulse/create`,
-        []
-      ),
-      createPanel(
-        DEFAULT_VIEW_PANELS.MY_PULSES,
-        `/my-pulses`,
-        []
-      ),
-      createPanel(
-        DEFAULT_VIEW_PANELS.CHANGE_LANGUAGE,
-        `/change-language`,
-        []
-      ),
-      createPanel(
-        DEFAULT_VIEW_PANELS.ABOUT_APP,
-        `/about-app`,
-        []
-      ),
+      createPanel(DEFAULT_VIEW_PANELS.PROFILE, `/profile`, []),
+      createPanel(DEFAULT_VIEW_PANELS.NOTIFICATIONS, `/notifications`, []),
+      createPanel(DEFAULT_VIEW_PANELS.PARTICIPANT_PULSE, `/pulse/:id`, []),
+      createPanel(DEFAULT_VIEW_PANELS.ADMIN_PULSE, `/pulse/admin/:id`, []),
+      createPanel(DEFAULT_VIEW_PANELS.PULSE_PREVIEW, `/pulse/preview/:id`, []),
+      createPanel(DEFAULT_VIEW_PANELS.CREATE_PULSE, `/pulse/create`, []),
+      createPanel(DEFAULT_VIEW_PANELS.MY_PULSES, `/my-pulses`, []),
+      createPanel(DEFAULT_VIEW_PANELS.CHANGE_LANGUAGE, `/change-language`, []),
+      createPanel(DEFAULT_VIEW_PANELS.ABOUT_APP, `/about-app`, []),
       createPanel(
         DEFAULT_VIEW_PANELS.ADMIN_PULSE_APPLICATIONS,
         `/pulse/admin/:id/applications`,
@@ -94,6 +59,11 @@ export const routes = RoutesConfig.create([
       createPanel(
         DEFAULT_VIEW_PANELS.ADMIN_PULSE_TEAM,
         `/pulse/admin/:id/team`,
+        []
+      ),
+      createPanel(
+        DEFAULT_VIEW_PANELS.CREATE_COMPLAINT,
+        "/pulse/:id/complaint",
         []
       ),
     ]),
