@@ -10,7 +10,7 @@ export const useMyPulses = () => {
     const fetchMyPulses = async () => {
       setLoading(true);
       try {
-        const response = await api.get<{ pulses: IPulse[] }>("/content/pulses");
+        const response = await api.get<{ pulses: IPulse[] }>("/content/pulses/my");
 
         if (response.status === 200) {
           setMyPulses(response.data.pulses);

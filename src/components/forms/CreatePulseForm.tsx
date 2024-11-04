@@ -125,7 +125,7 @@ export const CreatePulseForm: FC<ICreatePulseFormProps> = ({
                 {t(`createPulse.labels.shortDescription`)}
               </FormItem.TopLabel>
               <FormItem.TopAside>
-                {data.short_description.length}/50
+                {data.short_description.length}/150
               </FormItem.TopAside>
             </FormItem.Top>
           }
@@ -134,7 +134,7 @@ export const CreatePulseForm: FC<ICreatePulseFormProps> = ({
           <Textarea
             id="short_description"
             name="short_description"
-            maxLength={50}
+            maxLength={150}
             value={data.short_description}
             onChange={(value) =>
               handleChange({ short_description: value.target.value })
