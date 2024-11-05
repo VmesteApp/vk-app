@@ -94,13 +94,14 @@ export const CreateComplaint: FC<NavIdProps> = ({ id }) => {
         >
           <Textarea
             rows={15}
+            maxLength={200}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder={t("complaints.placeholder")}
           />
         </FormItem>
         <CellButton
-          disabled={!message.length}
+          disabled={!message.trim().length}
           onClick={handleCreateComplaint}
           centered
           before={<Icon24SendOutline />}
