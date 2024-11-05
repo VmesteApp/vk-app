@@ -23,7 +23,7 @@ export const PulseCard: FC<IPulseCardProps> = ({
       src={logo}
       header={
         <Flex direction="row" align="center">
-          <Title level="2" style={{ flex: 1 }}>
+          <Title level="2" style={{ flex: 1, wordBreak: "break-all" }}>
             {pulse.name}
           </Title>
           <PulsePopover
