@@ -29,7 +29,7 @@ export const PulsePreview: FC<NavIdProps> = ({ id }) => {
     const fetchPulse = async () => {
       try {
         const response = await api.get<IPulsePreview>(
-          `/content/pulses/${params?.id}`
+          `/content/pulses/${params?.id}/preview`
         );
 
         if (response.status === 200) {
