@@ -3,7 +3,6 @@ import {
   Panel,
   PanelHeader,
   NavIdProps,
-  Spinner,
   PanelHeaderBack,
   RichCell,
   Avatar,
@@ -12,10 +11,11 @@ import {
   Textarea,
   CellButton,
   MiniInfoCell,
+  PanelSpinner,
 } from "@vkontakte/vkui";
 import { useParams, useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { useTranslation } from "react-i18next";
-import { usePulse } from "../hook";
+import { usePulsePreview } from "../hook";
 import { Icon24SendOutline } from "@vkontakte/icons";
 import api from "../network";
 
@@ -25,7 +25,7 @@ export const CreateComplaint: FC<NavIdProps> = ({ id }) => {
   const params = useParams<"id">();
   const [message, setMessage] = useState<string>("");
 
-  const { pulse, loading } = usePulse(Number(params?.id));
+  const { pulse, loading } = usePulsePreview(Number(params?.id));
 
   const handleCreateComplaint = async () => {
     if (!message.length || !pulse) return;
@@ -41,7 +41,7 @@ export const CreateComplaint: FC<NavIdProps> = ({ id }) => {
       );
 
       if (response.status) {
-        routeNavigator.back();
+        routeNavigator.push("/");
       }
     } catch (error) {
       console.log(error);
@@ -54,7 +54,7 @@ export const CreateComplaint: FC<NavIdProps> = ({ id }) => {
         <PanelHeader
           before={<PanelHeaderBack onClick={() => routeNavigator.back()} />}
         ></PanelHeader>
-        <Spinner />
+        <PanelSpinner />
       </Panel>
     );
   }
