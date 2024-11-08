@@ -15,7 +15,7 @@ import {
 } from "@vkontakte/vkui";
 import { useParams, useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { useTranslation } from "react-i18next";
-import { usePulsePreview } from "../hook";
+import { usePulse } from "../hook";
 import { Icon24SendOutline } from "@vkontakte/icons";
 import api from "../network";
 
@@ -25,7 +25,7 @@ export const CreateComplaint: FC<NavIdProps> = ({ id }) => {
   const params = useParams<"id">();
   const [message, setMessage] = useState<string>("");
 
-  const { pulse, loading } = usePulsePreview(Number(params?.id));
+  const { pulse, loading } = usePulse(Number(params?.id));
 
   const handleCreateComplaint = async () => {
     if (!message.length || !pulse) return;

@@ -1,0 +1,1 @@
+export { ErrorPlaceholder } from './ErrorPlaceholder'

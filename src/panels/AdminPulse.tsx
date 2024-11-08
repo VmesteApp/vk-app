@@ -3,22 +3,23 @@ import {
   Panel,
   PanelHeader,
   NavIdProps,
-  Spinner,
   PanelHeaderBack,
   Group,
   SimpleCell,
   Placeholder,
   Button,
+  PanelSpinner,
 } from "@vkontakte/vkui";
 import { useParams, useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { useTranslation } from "react-i18next";
-import { useLink, usePulsePreview } from "../hook";
+import { useLink, usePulse } from "../hook";
 import {
   Icon28PrivacyOutline,
   Icon28SettingsOutline,
   Icon28UsersOutline,
   Icon56UsersOutline,
 } from "@vkontakte/icons";
+import { ErrorPlaceholder } from "../components";
 
 export const AdminPulse: FC<NavIdProps> = ({ id }) => {
   const { t } = useTranslation();
@@ -26,7 +27,18 @@ export const AdminPulse: FC<NavIdProps> = ({ id }) => {
   const params = useParams<"id">();
   const { openLink } = useLink();
 
-  const { pulse, loading } = usePulsePreview(Number(params?.id));
+  const { pulse, loading, errorMessage } = usePulse(Number(params?.id));
+
+  if (errorMessage.length > 0) {
+    return (
+      <Panel id={id}>
+        <PanelHeader
+          before={<PanelHeaderBack onClick={() => routeNavigator.back()} />}
+        ></PanelHeader>
+        <ErrorPlaceholder message={errorMessage} />
+      </Panel>
+    );
+  }
 
   if (loading || !pulse) {
     return (
@@ -34,7 +46,7 @@ export const AdminPulse: FC<NavIdProps> = ({ id }) => {
         <PanelHeader
           before={<PanelHeaderBack onClick={() => routeNavigator.back()} />}
         ></PanelHeader>
-        <Spinner />
+        <PanelSpinner />
       </Panel>
     );
   }

@@ -6,12 +6,12 @@ import {
   Panel,
   PanelHeader,
   PanelHeaderBack,
+  PanelSpinner,
   Placeholder,
-  Spinner,
 } from "@vkontakte/vkui";
 import { FC, useMemo } from "react";
-import { usePulseApplications, usePulsePreview } from "../hook";
-import { ApplicationCardWithActions } from "../components";
+import { usePulseApplications, usePulse } from "../hook";
+import { ApplicationCardWithActions, ErrorPlaceholder } from "../components";
 import { useTranslation } from "react-i18next";
 import api from "../network";
 
@@ -20,7 +20,11 @@ export const AdminPulseApplications: FC<NavIdProps> = ({ id }) => {
   const { t } = useTranslation();
   const params = useParams<"id">();
 
-  const { pulse, loading: loadingPulse } = usePulsePreview(Number(params?.id));
+  const {
+    pulse,
+    loading: loadingPulse,
+    errorMessage,
+  } = usePulse(Number(params?.id));
   const {
     applications,
     loading: loadingApplications,
@@ -55,13 +59,24 @@ export const AdminPulseApplications: FC<NavIdProps> = ({ id }) => {
     }
   };
 
+  if (errorMessage.length > 0) {
+    return (
+      <Panel id={id}>
+        <PanelHeader
+          before={<PanelHeaderBack onClick={() => routeNavigator.back()} />}
+        ></PanelHeader>
+        <ErrorPlaceholder message={errorMessage} />
+      </Panel>
+    );
+  }
+
   if (loadingPulse || !pulse || loadingApplications) {
     return (
       <Panel id={id}>
         <PanelHeader
           before={<PanelHeaderBack onClick={() => routeNavigator.back()} />}
         ></PanelHeader>
-        <Spinner />
+        <PanelSpinner />
       </Panel>
     );
   }

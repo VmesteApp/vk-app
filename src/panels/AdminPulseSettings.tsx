@@ -7,20 +7,22 @@ import {
   Panel,
   PanelHeader,
   PanelHeaderBack,
+  PanelSpinner,
   Spinner,
 } from "@vkontakte/vkui";
 import { FC } from "react";
 import { useTranslation } from "react-i18next";
-import { usePulsePreview } from "../hook";
+import { usePulse } from "../hook";
 import { Icon24DeleteOutline } from "@vkontakte/icons";
 import api from "../network";
+import { ErrorPlaceholder } from "../components";
 
 export const AdminPulseSettings: FC<NavIdProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
   const { t } = useTranslation();
   const params = useParams<"id">();
 
-  const { pulse, loading } = usePulsePreview(Number(params?.id));
+  const { pulse, loading, errorMessage } = usePulse(Number(params?.id));
 
   const handleDeletePulse = async () => {
     try {
@@ -34,13 +36,24 @@ export const AdminPulseSettings: FC<NavIdProps> = ({ id }) => {
     }
   };
 
+  if (errorMessage.length > 0) {
+    return (
+      <Panel id={id}>
+        <PanelHeader
+          before={<PanelHeaderBack onClick={() => routeNavigator.back()} />}
+        ></PanelHeader>
+        <ErrorPlaceholder message={errorMessage} />
+      </Panel>
+    );
+  }
+
   if (loading || !pulse) {
     return (
       <Panel id={id}>
         <PanelHeader
           before={<PanelHeaderBack onClick={() => routeNavigator.back()} />}
         ></PanelHeader>
-        <Spinner />
+        <PanelSpinner />
       </Panel>
     );
   }
