@@ -6,6 +6,7 @@ import {
   PanelHeaderBack,
   Group,
   CardGrid,
+  PanelSpinner,
 } from "@vkontakte/vkui";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { PulseCard } from "../components";
@@ -18,9 +19,11 @@ export const Feed: FC<NavIdProps> = ({ id }) => {
   const { t } = useTranslation();
 
   const [feed, setFeed] = useState<IPulse[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchFeed = async () => {
+      setLoading(true);
       try {
         const response = await api.get<IPulse[]>("/content/feed");
 
@@ -29,6 +32,8 @@ export const Feed: FC<NavIdProps> = ({ id }) => {
         }
       } catch (error) {
         console.log(error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -42,31 +47,24 @@ export const Feed: FC<NavIdProps> = ({ id }) => {
       >
         {t("feed.title")}
       </PanelHeader>
-      {/* temp-ry removed
-      <Group separator="hide">
-        <Search
-          value={undefined}
-          after={null}
-          onChange={undefined}
-          placeholder={t("feed.search")}
-          icon={<Icon24Filter />}
-          onIconClick={() => {
-            return false;
-          }}
-        />
-      </Group> */}
 
-      <Group>
-        <CardGrid size="l">
-          {feed.map((pulse) => (
-            <PulseCard
-              key={pulse.id}
-              pulse={pulse}
-              onPress={() => routeNavigator.push(`/pulse/preview/${pulse.id}`)}
-            />
-          ))}
-        </CardGrid>
-      </Group>
+      {loading ? (
+        <PanelSpinner />
+      ) : (
+        <Group>
+          <CardGrid size="l">
+            {feed.map((pulse) => (
+              <PulseCard
+                key={pulse.id}
+                pulse={pulse}
+                onPress={() =>
+                  routeNavigator.push(`/pulse/preview/${pulse.id}`)
+                }
+              />
+            ))}
+          </CardGrid>
+        </Group>
+      )}
     </Panel>
   );
 };

@@ -8,7 +8,6 @@ import {
   PanelHeader,
   PanelHeaderBack,
   PanelSpinner,
-  Spinner,
 } from "@vkontakte/vkui";
 import { FC } from "react";
 import { useTranslation } from "react-i18next";
