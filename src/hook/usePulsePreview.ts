@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import api from "../network";
-import { IPulse } from "../types";
+import { IPulsePreview } from "../types";
 
 export const usePulse = (pulseID: number) => {
-  const [pulse, setPulse] = useState<IPulse | null>(null);
+  const [pulse, setPulse] = useState<IPulsePreview | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>("");
 
@@ -13,7 +13,7 @@ export const usePulse = (pulseID: number) => {
       setLoading(true);
 
       api
-        .get<IPulse>(`/content/pulses/${pulseID}`)
+        .get<IPulsePreview>(`/content/pulses/${pulseID}`)
         .then((response) => {
           if (response.status === 200) {
             setPulse(response.data);

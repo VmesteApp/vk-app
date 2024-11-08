@@ -5,14 +5,15 @@ export interface ITag {
 
 export interface IPulse {
   id: number;
+  blocked: boolean;
   category: string;
   name: string;
   founder_id: number;
   description: string;
   short_description: string;
+  members: number[];
   images: string[];
   tags: ITag[];
-  blocked: boolean;
 }
 
 export interface IApplication {
@@ -34,10 +35,8 @@ export interface IPulsePreview {
   blocked: boolean;
   category: string;
   name: string;
-  founder_id: number;
   description: string;
   short_description: string;
-  members: number[];
   images: string[];
   tags: ITag[];
 }

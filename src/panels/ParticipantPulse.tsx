@@ -1,4 +1,4 @@
-import { FC, useEffect, useMemo, useState } from "react";
+import { FC, useMemo } from "react";
 import {
   Panel,
   PanelHeader,
@@ -6,50 +6,42 @@ import {
   PanelHeaderBack,
   Group,
   Header,
-  Spinner,
+  PanelSpinner,
 } from "@vkontakte/vkui";
 import { useParams, useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { useTranslation } from "react-i18next";
-import { IPulsePreview } from "../types";
-import api from "../network";
-import { MemberCard, PreviewPulseCard } from "../components";
+import { ErrorPlaceholder, MemberCard, PreviewPulseCard } from "../components";
+import { usePulse } from "../hook";
 
 export const ParticipantPulse: FC<NavIdProps> = ({ id }) => {
   const { t } = useTranslation();
   const routeNavigator = useRouteNavigator();
   const params = useParams<"id">();
-  const [pulse, setPulse] = useState<IPulsePreview | null>(null);
-
-  useEffect(() => {
-    const fetchPulse = async () => {
-      try {
-        const response = await api.get<IPulsePreview>(
-          `/content/pulses/${params?.id}`
-        );
-
-        if (response.status === 200) {
-          setPulse(response.data);
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    fetchPulse();
-  }, [params?.id]);
+  const { pulse, loading, errorMessage } = usePulse(Number(params?.id));
 
   const members = useMemo(
     () => (pulse ? [pulse.founder_id, ...pulse.members] : []),
     [pulse]
   );
 
-  if (!pulse) {
+  if (errorMessage.length > 0) {
     return (
       <Panel id={id}>
         <PanelHeader
           before={<PanelHeaderBack onClick={() => routeNavigator.back()} />}
         ></PanelHeader>
-        <Spinner />
+        <ErrorPlaceholder message={errorMessage} />
+      </Panel>
+    );
+  }
+
+  if (loading || !pulse) {
+    return (
+      <Panel id={id}>
+        <PanelHeader
+          before={<PanelHeaderBack onClick={() => routeNavigator.back()} />}
+        ></PanelHeader>
+        <PanelSpinner />
       </Panel>
     );
   }
