@@ -19,7 +19,7 @@ export const AdminPulseTeam: FC<NavIdProps> = ({ id }) => {
   const { t } = useTranslation();
   const params = useParams<"id">();
 
-  const { pulse, loading, errorMessage, currentUserIsAdmin, updatePulse } =
+  const { pulse, loading, errorMessage, currentUserIsAdmin } =
     usePulse(Number(params?.id));
 
   // const handleDeleteMember = useCallback(async (userID: number) => {
