@@ -8,19 +8,33 @@ import {
   PanelHeaderBack,
   PanelSpinner,
 } from "@vkontakte/vkui";
-import { FC } from "react";
+import { FC, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { usePulse } from "../hook";
 import { ErrorPlaceholder, MemberCard } from "../components";
+import api from "../network";
 
 export const AdminPulseTeam: FC<NavIdProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
   const { t } = useTranslation();
   const params = useParams<"id">();
 
-  const { pulse, loading, errorMessage, currentUserIsAdmin } = usePulse(
-    Number(params?.id)
-  );
+  const { pulse, loading, errorMessage, currentUserIsAdmin, updatePulse } =
+    usePulse(Number(params?.id));
+
+  const handleDeleteMember = useCallback(async (userID: number) => {
+    try {
+      const response = await api.delete(
+        `/pulses/${pulse?.id}/members/${userID}`
+      );
+
+      if (response.status === 200) {
+        await updatePulse();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }, [pulse?.id, updatePulse]);
 
   if (errorMessage.length > 0) {
     return (
@@ -66,11 +80,17 @@ export const AdminPulseTeam: FC<NavIdProps> = ({ id }) => {
       </PanelHeader>
 
       <Group header={<Header>{t("adminPulse.team")}</Header>}>
-        {[pulse.founder_id, ...pulse.members].map((member, index) => (
+        <MemberCard
+          key={pulse.founder_id}
+          userID={pulse.founder_id}
+          role="founder"
+        />
+        {pulse.members.map((member) => (
           <MemberCard
             key={member}
             userID={member}
-            role={index === 0 ? "founder" : "member"}
+            role="member"
+            // onDelete={() => handleDeleteMember(member)}
           />
         ))}
       </Group>
