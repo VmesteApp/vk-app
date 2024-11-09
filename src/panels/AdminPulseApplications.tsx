@@ -24,6 +24,7 @@ export const AdminPulseApplications: FC<NavIdProps> = ({ id }) => {
     pulse,
     loading: loadingPulse,
     errorMessage,
+    currentUserIsAdmin,
   } = usePulse(Number(params?.id));
   const {
     applications,
@@ -77,6 +78,19 @@ export const AdminPulseApplications: FC<NavIdProps> = ({ id }) => {
           before={<PanelHeaderBack onClick={() => routeNavigator.back()} />}
         ></PanelHeader>
         <PanelSpinner />
+      </Panel>
+    );
+  }
+
+  if (!currentUserIsAdmin) {
+    return (
+      <Panel id={id}>
+        <PanelHeader
+          before={<PanelHeaderBack onClick={() => routeNavigator.back()} />}
+        >
+          {pulse.name}
+        </PanelHeader>
+        <ErrorPlaceholder message="You aren't admin" />
       </Panel>
     );
   }

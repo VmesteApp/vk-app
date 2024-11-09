@@ -18,7 +18,9 @@ export const AdminPulseTeam: FC<NavIdProps> = ({ id }) => {
   const { t } = useTranslation();
   const params = useParams<"id">();
 
-  const { pulse, loading, errorMessage } = usePulse(Number(params?.id));
+  const { pulse, loading, errorMessage, currentUserIsAdmin } = usePulse(
+    Number(params?.id)
+  );
 
   if (errorMessage.length > 0) {
     return (
@@ -41,6 +43,20 @@ export const AdminPulseTeam: FC<NavIdProps> = ({ id }) => {
       </Panel>
     );
   }
+
+  if (!currentUserIsAdmin) {
+    return (
+      <Panel id={id}>
+        <PanelHeader
+          before={<PanelHeaderBack onClick={() => routeNavigator.back()} />}
+        >
+          {pulse.name}
+        </PanelHeader>
+        <ErrorPlaceholder message="You aren't admin" />
+      </Panel>
+    );
+  }
+
   return (
     <Panel id={id}>
       <PanelHeader

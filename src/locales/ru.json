@@ -149,6 +149,7 @@
     "goToTechSupport": "Обратиться в тех.поддержку",
     "Unknown error": "Неизвестная ошибка",
     "There are not enough rights": "Извини, но ты не участник этого импульса.",
-    "There is no pulse with this id": "Такой импульс не найден"
+    "There is no pulse with this id": "Такой импульс не найден.",
+    "You aren't admin": "У тебя нет прав для администрирования этого импульса."
   }
 }
