@@ -8,6 +8,7 @@ import {
   HorizontalScroll,
   TabsItem,
   Spinner,
+  PanelHeaderButton,
 } from "@vkontakte/vkui";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { useTranslation } from "react-i18next";
@@ -69,7 +70,13 @@ export const MyPulses: FC<NavIdProps> = ({ id }) => {
 
   return (
     <Panel id={id}>
-      <PanelHeader before={<Icon28AddOutline onClick={handleCreatePulse} />}>
+      <PanelHeader
+        before={
+          <PanelHeaderButton onClick={handleCreatePulse}>
+            <Icon28AddOutline />
+          </PanelHeaderButton>
+        }
+      >
         {t("myPulses.title")}
       </PanelHeader>
 
