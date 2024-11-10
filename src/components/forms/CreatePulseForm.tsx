@@ -54,13 +54,10 @@ export const CreatePulseForm: FC<ICreatePulseFormProps> = ({
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const filelist = event.target.files;
     if (!filelist) {
-      return handleChange({
-        ...data,
-        images: [],
-      });
+      return;
     }
 
-    const images = [];
+    const images = [...data.images];
     for (let i = 0; i < filelist.length; i++) {
       images.push(filelist[i]);
     }
