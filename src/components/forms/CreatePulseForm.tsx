@@ -19,6 +19,7 @@ import {
 import { FC, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { useLink } from "../../hook";
+import { isImage } from "../../utils";
 
 interface IOption {
   label: string;
@@ -59,7 +60,9 @@ export const CreatePulseForm: FC<ICreatePulseFormProps> = ({
 
     const images = [...data.images];
     for (let i = 0; i < filelist.length; i++) {
-      images.push(filelist[i]);
+      if (isImage(filelist[i])) {
+        images.push(filelist[i]);
+      }
     }
 
     handleChange({
