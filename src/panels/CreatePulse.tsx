@@ -4,6 +4,7 @@ import {
   Panel,
   PanelHeader,
   PanelHeaderBack,
+  PanelSpinner,
 } from "@vkontakte/vkui";
 import { FC, useCallback, useEffect, useMemo, useState } from "react";
 import { CreatePulseForm, ICreatePulsePayload } from "../components";
@@ -26,6 +27,7 @@ export const CreatePulse: FC<NavIdProps> = ({ id }) => {
   const [pulse, setPulse] = useState<ICreatePulsePayload>(defaultValue);
   const [tags, setTags] = useState<ITag[]>([]);
   const [isFormValid, setIsFormValid] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   // fetch tags
   useEffect(() => {
@@ -66,6 +68,9 @@ export const CreatePulse: FC<NavIdProps> = ({ id }) => {
   );
 
   const handleSubmit = useCallback(async () => {
+    if (loading) return;
+    setLoading(true);
+
     try {
       const body = {
         ...pulse,
@@ -79,29 +84,25 @@ export const CreatePulse: FC<NavIdProps> = ({ id }) => {
       if (response.status === 200) {
         const pulseID = response.data.pulse_id;
 
-        const formData = new FormData();
-        pulse.images.forEach((file) => {
+        const imageUploadPromises = pulse.images.map(async (file) => {
+          const formData = new FormData();
           formData.append("files", file);
-        });
-
-        const imageResponse = await api.post(
-          `/content/pulse/${pulseID}/image`,
-          formData,
-          {
+          return api.post(`/content/pulse/${pulseID}/image`, formData, {
             headers: {
               "Content-Type": "multipart/form-data",
             },
-          }
-        );
+          });
+        });
 
-        if (imageResponse.status === 200) {
-          routeNavigator.back();
-        }
+        await Promise.all(imageUploadPromises);
       }
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoading(false);
+      routeNavigator.back();
     }
-  }, [pulse, routeNavigator]);
+  }, [loading, pulse, routeNavigator]);
 
   return (
     <Panel id={id}>
@@ -111,13 +112,17 @@ export const CreatePulse: FC<NavIdProps> = ({ id }) => {
         {t("createPulse.title")}
       </PanelHeader>
 
-      <CreatePulseForm
-        data={pulse}
-        handleChange={(newValue) => setPulse({ ...pulse, ...newValue })}
-        handleSubmit={handleSubmit}
-        tagsAsset={tagsAsset}
-        disabled={!isFormValid}
-      />
+      {loading ? (
+        <PanelSpinner />
+      ) : (
+        <CreatePulseForm
+          data={pulse}
+          handleChange={(newValue) => setPulse({ ...pulse, ...newValue })}
+          handleSubmit={handleSubmit}
+          tagsAsset={tagsAsset}
+          disabled={!isFormValid}
+        />
+      )}
     </Panel>
   );
 };

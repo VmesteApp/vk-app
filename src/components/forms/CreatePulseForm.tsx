@@ -15,11 +15,16 @@ import {
   Header,
   Link,
   MiniInfoCell,
+  usePlatform,
 } from "@vkontakte/vkui";
 import { FC, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { useLink } from "../../hook";
 import { isImage } from "../../utils";
+import {
+  EGetLaunchParamsResponsePlatforms,
+  parseURLSearchParamsForGetLaunchParams,
+} from "@vkontakte/vk-bridge";
 
 interface IOption {
   label: string;
@@ -51,6 +56,17 @@ export const CreatePulseForm: FC<ICreatePulseFormProps> = ({
 }) => {
   const { t } = useTranslation();
   const { openLink } = useLink();
+  const platform = usePlatform();
+  const { vk_platform } = parseURLSearchParamsForGetLaunchParams(
+    window.location.search
+  );
+
+  const limitedSize = useMemo(
+    () =>
+      platform === "ios" ||
+      vk_platform === EGetLaunchParamsResponsePlatforms.MOBILE_IPHONE,
+    [platform, vk_platform]
+  );
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const filelist = event.target.files;
@@ -60,7 +76,10 @@ export const CreatePulseForm: FC<ICreatePulseFormProps> = ({
 
     const images = [...data.images];
     for (let i = 0; i < filelist.length; i++) {
-      if (isImage(filelist[i])) {
+      if (
+        isImage(filelist[i]) &&
+        (!limitedSize || filelist[i].size <= 1024 * 1024)
+      ) {
         images.push(filelist[i]);
       }
     }
@@ -191,7 +210,11 @@ export const CreatePulseForm: FC<ICreatePulseFormProps> = ({
         <FormItem
           top={t("createPulse.labels.images")}
           required
-          bottom={t("createPulse.placeholders.images")}
+          bottom={
+            limitedSize
+              ? `${t("createPulse.placeholders.images")} ${t("createPulse.placeholders.limitedSize")}`
+              : t("createPulse.placeholders.images")
+          }
         >
           <FilePicker
             onChange={handleFileChange}
