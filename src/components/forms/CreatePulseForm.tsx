@@ -134,7 +134,7 @@ export const CreatePulseForm: FC<ICreatePulseFormProps> = ({
             name="name"
             value={data.name}
             required
-            onChange={(value) => handleChange({ name: value.target.value })}
+            onChange={(value) => handleChange({ name: value.target.value.trimStart() })}
           />
         </FormItem>
         <FormItem
@@ -156,7 +156,7 @@ export const CreatePulseForm: FC<ICreatePulseFormProps> = ({
             maxLength={150}
             value={data.short_description}
             onChange={(value) =>
-              handleChange({ short_description: value.target.value })
+              handleChange({ short_description: value.target.value.trimStart() })
             }
             placeholder={t(`createPulse.placeholders.shortDescription`)}
           />
@@ -181,7 +181,7 @@ export const CreatePulseForm: FC<ICreatePulseFormProps> = ({
             rows={15}
             value={data.description}
             onChange={(value) =>
-              handleChange({ description: value.target.value })
+              handleChange({ description: value.target.value.trimStart() })
             }
             required
             placeholder={t(`createPulse.placeholders.description`)}
