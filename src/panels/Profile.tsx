@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import {
   Panel,
   PanelHeader,
@@ -7,6 +7,7 @@ import {
   Group,
   Header,
   SimpleCell,
+  Switch,
 } from "@vkontakte/vkui";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import {
@@ -16,6 +17,8 @@ import {
 import { useTranslation } from "react-i18next";
 import { LANGUAGES } from "../constants";
 import { useLink } from "../hook";
+import { parseURLSearchParamsForGetLaunchParams } from "@vkontakte/vk-bridge";
+import { disableNotifications, enableNotifications } from "../utils";
 
 const getLanguageNameByCode = (code: string) => {
   const lang = LANGUAGES.find((lang) => lang.code === code);
@@ -26,6 +29,25 @@ export const Profile: FC<NavIdProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
   const { openLink } = useLink();
   const { t, i18n } = useTranslation();
+  const { vk_are_notifications_enabled } =
+    parseURLSearchParamsForGetLaunchParams(window.location.search);
+  const [notificationsEnabled, setNotificationsEnabled] = useState<boolean>(
+    Boolean(vk_are_notifications_enabled)
+  );
+
+  const toggleNotificationsEnabled = async (enabled: boolean) => {
+    try {
+      const res = await (enabled
+        ? enableNotifications()
+        : disableNotifications());
+
+      if (res) {
+        setNotificationsEnabled(!notificationsEnabled);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <Panel id={id}>
@@ -69,9 +91,17 @@ export const Profile: FC<NavIdProps> = ({ id }) => {
         >
           {t("menu.settings.lang")}
         </SimpleCell>
-        {/* <SimpleCell Component="label" after={<Switch />}>
+        <SimpleCell
+          Component="label"
+          after={
+            <Switch
+              checked={notificationsEnabled}
+              onChange={(e) => toggleNotificationsEnabled(e.target.checked)}
+            />
+          }
+        >
           {t("menu.settings.pushNotifications")}
-        </SimpleCell> */}
+        </SimpleCell>
       </Group>
     </Panel>
   );

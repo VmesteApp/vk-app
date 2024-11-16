@@ -41,7 +41,7 @@ import {
 import { useEffect, useMemo } from "react";
 import { authorize } from "./utils/authorize";
 import { useTranslation } from "react-i18next";
-import { useOnboarding } from "./utils";
+import { enableNotifications, useOnboarding } from "./utils";
 
 const sideBarOptions: (SideBarOption & { panel?: string })[] = [
   {
@@ -78,6 +78,7 @@ export const App = () => {
   useEffect(() => {
     authorize();
     startOnboarding();
+    enableNotifications();
   }, []);
 
   const modal = (
