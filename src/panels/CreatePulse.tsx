@@ -7,10 +7,16 @@ import {
   PanelSpinner,
 } from "@vkontakte/vkui";
 import { FC, useCallback, useEffect, useMemo, useState } from "react";
-import { CreatePulseForm, ICreatePulsePayload } from "../components";
+import {
+  CreatePulseForm,
+  ICreatePulsePayload,
+  PulseAlert,
+  UnknownErrorAlert,
+} from "../components";
 import { ITag } from "../types";
 import api from "../network";
 import { useTranslation } from "react-i18next";
+import { AxiosError } from "axios";
 
 const defaultValue: ICreatePulsePayload = {
   name: "",
@@ -96,11 +102,18 @@ export const CreatePulse: FC<NavIdProps> = ({ id }) => {
 
         await Promise.all(imageUploadPromises);
       }
+      routeNavigator.back();
     } catch (error) {
-      console.error(error);
+      const axiosError = error as AxiosError;
+
+      if (axiosError?.status && axiosError.status === 422) {
+        routeNavigator.showPopout(<PulseAlert />);
+      } else {
+        routeNavigator.showPopout(<UnknownErrorAlert />);
+        console.log(error);
+      }
     } finally {
       setLoading(false);
-      routeNavigator.back();
     }
   }, [loading, pulse, routeNavigator]);
 

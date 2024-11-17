@@ -13,6 +13,7 @@ import {
 } from "@vkontakte/vkui";
 import {
   useActiveVkuiLocation,
+  usePopout,
   useRouteNavigator,
 } from "@vkontakte/vk-mini-apps-router";
 
@@ -72,6 +73,7 @@ export const App = () => {
   const { viewWidth } = useAdaptivityConditionalRender();
   const { t } = useTranslation();
   const { startOnboarding } = useOnboarding();
+  const routerPopout = usePopout();
 
   const hasHeader = platform !== "vkcom";
 
@@ -99,6 +101,7 @@ export const App = () => {
   return (
     <SplitLayout
       center
+      popout={routerPopout}
       modal={modal}
       header={hasHeader && <PanelHeader delimiter="none" />}
     >
