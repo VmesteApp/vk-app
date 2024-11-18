@@ -93,16 +93,13 @@ export const AdminPulseSettings: FC<NavIdProps> = ({ id }) => {
           {t("adminPulseSettings.deletePulse")}
         </CellButton>
       </Group>
-      <Group
-        header={<Header>{t("adminPulseSettings.dangerZone")}</Header>}
-        description={t("adminPulseSettings.warning")}
-      >
+      <Group>
         <CellButton
           onClick={() => sharePulse(pulse.id)}
           before={<Icon24Share />}
           mode="primary"
         >
-          {t("complaints.complaint")}
+          {t("complaints.share")}
         </CellButton>
       </Group>
     </Panel>
