@@ -110,6 +110,10 @@
     "lenta": {
       "title": "Feed",
       "subtitle": "The recommendation system will select the most interesting pulses for you."
+    },
+    "push": {
+      "title": "Notifications",
+      "subtitle": "In the menu you can turn on notifications and not miss anything important!"
     }
   },
   "participantPulse": {
