@@ -8,9 +8,11 @@ import {
   Header,
   SimpleCell,
   Switch,
+  CellButton,
 } from "@vkontakte/vkui";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import {
+  Icon24Share,
   Icon28HelpCircleOutline,
   Icon28InfoCircleOutline,
 } from "@vkontakte/icons";
@@ -18,7 +20,7 @@ import { useTranslation } from "react-i18next";
 import { LANGUAGES } from "../constants";
 import { useLink } from "../hook";
 import { parseURLSearchParamsForGetLaunchParams } from "@vkontakte/vk-bridge";
-import { disableNotifications, enableNotifications } from "../utils";
+import { disableNotifications, enableNotifications, shareApp } from "../utils";
 
 const getLanguageNameByCode = (code: string) => {
   const lang = LANGUAGES.find((lang) => lang.code === code);
@@ -29,10 +31,13 @@ export const Profile: FC<NavIdProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
   const { openLink } = useLink();
   const { t, i18n } = useTranslation();
-  const { vk_are_notifications_enabled } =
+  const { vk_are_notifications_enabled, vk_is_recommended } =
     parseURLSearchParamsForGetLaunchParams(window.location.search);
   const [notificationsEnabled, setNotificationsEnabled] = useState<boolean>(
     Boolean(vk_are_notifications_enabled)
+  );
+  const [appIsRecommended, setAppIsRecommended] = useState<boolean>(
+    Boolean(vk_is_recommended)
   );
 
   const toggleNotificationsEnabled = async (enabled: boolean) => {
@@ -43,6 +48,16 @@ export const Profile: FC<NavIdProps> = ({ id }) => {
 
       if (res) {
         setNotificationsEnabled(!notificationsEnabled);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleRecommendeApp = async () => {
+    try {
+      if (await shareApp()) {
+        setAppIsRecommended(true);
       }
     } catch (error) {
       console.log(error);
@@ -103,6 +118,19 @@ export const Profile: FC<NavIdProps> = ({ id }) => {
           {t("menu.settings.pushNotifications")}
         </SimpleCell>
       </Group>
+
+      {!appIsRecommended && (
+        <Group>
+          <CellButton
+            centered
+            before={<Icon24Share />}
+            mode="primary"
+            onClick={handleRecommendeApp}
+          >
+            {t("menu.settings.recommendApp")}
+          </CellButton>
+        </Group>
+      )}
     </Panel>
   );
 };

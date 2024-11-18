@@ -38,7 +38,8 @@
     },
     "settings": {
       "lang": "Язык",
-      "pushNotifications": "Push-уведомления"
+      "pushNotifications": "Push-уведомления",
+      "recommendApp": "Порекомендовать приложением"
     },
     "menu": {
       "notifications": "Уведомления",

@@ -38,7 +38,8 @@
     },
     "settings": {
       "lang": "Language",
-      "pushNotifications": "Push notifications"
+      "pushNotifications": "Push notifications",
+      "recommendApp": "Recommend app"
     },
     "menu": {
       "notifications": "Notifications",
