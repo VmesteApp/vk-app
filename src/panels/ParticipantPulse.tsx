@@ -7,11 +7,14 @@ import {
   Group,
   Header,
   PanelSpinner,
+  CellButton,
 } from "@vkontakte/vkui";
 import { useParams, useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { useTranslation } from "react-i18next";
 import { ErrorPlaceholder, MemberCard, PreviewPulseCard } from "../components";
 import { usePulse } from "../hook";
+import { sharePulse } from "../utils";
+import { Icon24Share } from "@vkontakte/icons";
 
 export const ParticipantPulse: FC<NavIdProps> = ({ id }) => {
   const { t } = useTranslation();
@@ -66,6 +69,16 @@ export const ParticipantPulse: FC<NavIdProps> = ({ id }) => {
             role={index === 0 ? "founder" : "member"}
           />
         ))}
+      </Group>
+      <Group
+      >
+        <CellButton
+          onClick={() => sharePulse(pulse.id)}
+          before={<Icon24Share />}
+          mode="primary"
+        >
+          {t("complaints.share")}
+        </CellButton>
       </Group>
     </Panel>
   );

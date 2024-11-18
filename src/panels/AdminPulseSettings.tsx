@@ -12,9 +12,10 @@ import {
 import { FC } from "react";
 import { useTranslation } from "react-i18next";
 import { usePulse } from "../hook";
-import { Icon24DeleteOutline } from "@vkontakte/icons";
+import { Icon24DeleteOutline, Icon24Share } from "@vkontakte/icons";
 import api from "../network";
 import { ErrorPlaceholder } from "../components";
+import { sharePulse } from "../utils";
 
 export const AdminPulseSettings: FC<NavIdProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
@@ -90,6 +91,18 @@ export const AdminPulseSettings: FC<NavIdProps> = ({ id }) => {
           mode="danger"
         >
           {t("adminPulseSettings.deletePulse")}
+        </CellButton>
+      </Group>
+      <Group
+        header={<Header>{t("adminPulseSettings.dangerZone")}</Header>}
+        description={t("adminPulseSettings.warning")}
+      >
+        <CellButton
+          onClick={() => sharePulse(pulse.id)}
+          before={<Icon24Share />}
+          mode="primary"
+        >
+          {t("complaints.complaint")}
         </CellButton>
       </Group>
     </Panel>

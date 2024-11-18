@@ -4,6 +4,7 @@ import { IPulse } from "../../types";
 import { useTranslation } from "react-i18next";
 import { PulsePopover } from "../popovers";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
+import { sharePulse } from "../../utils";
 
 interface IPulseCardProps {
   pulse: IPulse;
@@ -30,6 +31,7 @@ export const PulseCard: FC<IPulseCardProps> = ({
             onPressComplaint={() =>
               routeNavigator.push(`/pulse/${pulse.id}/complaint`)
             }
+            onPressShare={() => sharePulse(pulse.id)}
           />
         </Flex>
       }

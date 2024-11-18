@@ -1,13 +1,21 @@
 import { FC } from "react";
 import { Button, CellButton, Popover } from "@vkontakte/vkui";
-import { Icon16MoreVertical, Icon24FlagStart } from "@vkontakte/icons";
+import {
+  Icon16MoreVertical,
+  Icon24FlagStart,
+  Icon24Share,
+} from "@vkontakte/icons";
 import { useTranslation } from "react-i18next";
 
 interface IPulsePopover {
   onPressComplaint: () => void;
+  onPressShare: () => void;
 }
 
-export const PulsePopover: FC<IPulsePopover> = ({ onPressComplaint }) => {
+export const PulsePopover: FC<IPulsePopover> = ({
+  onPressComplaint,
+  onPressShare,
+}) => {
   const { t } = useTranslation();
 
   return (
@@ -40,6 +48,18 @@ export const PulsePopover: FC<IPulsePopover> = ({ onPressComplaint }) => {
             size={16}
           >
             {t("complaints.complaint")}
+          </CellButton>
+          <CellButton
+            role="menuitem"
+            before={<Icon24Share />}
+            onClick={() => {
+              onClose();
+              onPressShare();
+            }}
+            mode="primary"
+            size={16}
+          >
+            {t("complaints.share")}
           </CellButton>
         </div>
       )}
