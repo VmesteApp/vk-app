@@ -120,7 +120,8 @@
     "members": "Members",
     "founder": "Founder",
     "member": "Member",
-    "description": "Contact the founder for further interaction. In case of suspicious actions, contact tech support."
+    "description": "Contact the founder for further interaction. In case of suspicious actions, contact tech support.",
+    "leave": "Leave Pulse"
   },
   "adminPulse": {
     "applications": "Applications",

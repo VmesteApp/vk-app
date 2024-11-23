@@ -1,4 +1,4 @@
-import { FC, useMemo } from "react";
+import { FC, useCallback, useMemo } from "react";
 import {
   Panel,
   PanelHeader,
@@ -14,7 +14,8 @@ import { useTranslation } from "react-i18next";
 import { ErrorPlaceholder, MemberCard, PreviewPulseCard } from "../components";
 import { usePulse } from "../hook";
 import { sharePulse } from "../utils";
-import { Icon24Share } from "@vkontakte/icons";
+import { Icon24MinusSquareOutline, Icon24Share } from "@vkontakte/icons";
+import api from "../network";
 
 export const ParticipantPulse: FC<NavIdProps> = ({ id }) => {
   const { t } = useTranslation();
@@ -26,6 +27,18 @@ export const ParticipantPulse: FC<NavIdProps> = ({ id }) => {
     () => (pulse ? [pulse.founder_id, ...pulse.members] : []),
     [pulse]
   );
+
+  const handleLeave = useCallback(async () => {
+    try {
+      const response = await api.delete(`/content/pulses/${params?.id}/leave`);
+
+      if (response.status === 200) {
+        routeNavigator.push("/my-pulses");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }, [params?.id, routeNavigator]);
 
   if (errorMessage.length > 0) {
     return (
@@ -70,14 +83,22 @@ export const ParticipantPulse: FC<NavIdProps> = ({ id }) => {
           />
         ))}
       </Group>
-      <Group
-      >
+      <Group>
         <CellButton
           onClick={() => sharePulse(pulse.id)}
           before={<Icon24Share />}
           mode="primary"
         >
           {t("complaints.share")}
+        </CellButton>
+      </Group>
+      <Group>
+        <CellButton
+          onClick={handleLeave}
+          before={<Icon24MinusSquareOutline />}
+          mode="danger"
+        >
+          {t("participantPulse.leave")}
         </CellButton>
       </Group>
     </Panel>
